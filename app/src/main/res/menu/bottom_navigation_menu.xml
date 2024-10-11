@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_toHome_dashboard"
+        android:enabled="true"
+        android:icon="@drawable/ic_menu_home"
+        android:title="Dashboard"/>
+
+    <item
+        android:id="@+id/menu_toHome_applications"
+        android:enabled="true"
+        android:icon="@drawable/ic_menu_table"
+        android:title="Applications"/>
+
+    <item
+        android:id="@+id/menu_toHome_profile"
+        android:enabled="true"
+        android:icon="@drawable/ic_menu_person"
+        android:title="Profile" />
+
+</menu>
