@@ -27,6 +27,9 @@ class LoginScreenFragment : Fragment() {
             it.findNavController().navigate(R.id.action_loginScreenFragment_to_forgotPasswordScreenFragment)
         }
 
+        loginScreenBinding.btnLoginUser.setOnClickListener {
+            it.findNavController().navigate(R.id.action_loginScreenFragment_to_homeScreenFragment)
+        }
 
         return loginScreenBinding.root
     }

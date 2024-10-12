@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.job_application_tracker.databinding.FragmentHomeScreenBinding
 
 
@@ -21,6 +22,8 @@ class HomeScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         homeScreenBinding = FragmentHomeScreenBinding.inflate(layoutInflater,container,false)
+        homeScreenBinding.bottomNavigation.background = null
+        homeScreenBinding.bottomNavigation.menu.getItem(2).isEnabled  =  false
 
         dashboardScreenFragment  = DashboardScreenFragment()
         applicationListScreenFragment = ApplicationListScreenFragment()
@@ -29,11 +32,20 @@ class HomeScreenFragment : Fragment() {
         // Set up initial fragment
         loadFragment(dashboardScreenFragment)
 
+        // Set Floating Action Button onClick Listener
+        homeScreenBinding.fab.setOnClickListener{
+            Toast.makeText(requireContext(),"Add new Application!",Toast.LENGTH_SHORT).show()
+        }
+
         // Set up bottom navigation
         homeScreenBinding.bottomNavigation.setOnNavigationItemSelectedListener { menuItem ->
             when(menuItem.itemId){
                 R.id.menu_toHome_dashboard -> {
                     loadFragment(dashboardScreenFragment)
+                    true
+                }
+                R.id.menu_search_applications -> {
+                    Toast.makeText(requireContext(),"Search Nav Triggered!", Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.menu_toHome_applications -> {
@@ -57,7 +69,7 @@ class HomeScreenFragment : Fragment() {
     private fun loadFragment(fragment: Fragment) {
         // Replace the current fragment with the new one
         val transaction = childFragmentManager.beginTransaction()
-        transaction.replace(R.id.homeScreenContainer, fragment) // Assuming you have a container with this ID
+        transaction.replace(R.id.homeScreenContainer, fragment)
         transaction.commit()
     }
 
