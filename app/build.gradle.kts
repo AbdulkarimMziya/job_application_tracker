@@ -50,6 +50,10 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    //    <--Splash Screen Dependency -->
+    val splash_version = "1.0.1"
+    implementation("androidx.core:core-splashscreen:$splash_version")
+
     //    <--Navigation Library -->
     val nav_version = "2.8.1"
     implementation("androidx.navigation:navigation-fragment:$nav_version")
