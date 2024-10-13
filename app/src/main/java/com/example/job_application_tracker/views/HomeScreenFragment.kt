@@ -1,4 +1,4 @@
-package com.example.job_application_tracker
+package com.example.job_application_tracker.views
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.job_application_tracker.R
 import com.example.job_application_tracker.databinding.FragmentHomeScreenBinding
 
 
@@ -34,6 +35,8 @@ class HomeScreenFragment : Fragment() {
 
         // Set Floating Action Button onClick Listener
         homeScreenBinding.fab.setOnClickListener{
+            // Create the new fragment instance
+            // Slide up entry transition, Slide down exit transition
             Toast.makeText(requireContext(),"Add new Application!",Toast.LENGTH_SHORT).show()
         }
 
