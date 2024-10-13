@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.job_application_tracker.EditFormScreenFragment
 import com.example.job_application_tracker.R
 import com.example.job_application_tracker.databinding.FragmentHomeScreenBinding
 
@@ -17,6 +18,7 @@ class HomeScreenFragment : Fragment() {
     private lateinit var dashboardScreenFragment: DashboardScreenFragment
     private lateinit var applicationListScreenFragment: ApplicationListScreenFragment
     private lateinit var profileScreenFragment: ProfileScreenFragment
+    private lateinit var editFormScreenFragment: EditFormScreenFragment
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +31,7 @@ class HomeScreenFragment : Fragment() {
         dashboardScreenFragment  = DashboardScreenFragment()
         applicationListScreenFragment = ApplicationListScreenFragment()
         profileScreenFragment = ProfileScreenFragment()
+        editFormScreenFragment = EditFormScreenFragment()
 
         // Set up initial fragment
         loadFragment(dashboardScreenFragment)
@@ -37,7 +40,8 @@ class HomeScreenFragment : Fragment() {
         homeScreenBinding.fab.setOnClickListener{
             // Create the new fragment instance
             // Slide up entry transition, Slide down exit transition
-            Toast.makeText(requireContext(),"Add new Application!",Toast.LENGTH_SHORT).show()
+            loadFragment(editFormScreenFragment)
+//          Toast.makeText(requireContext(),"Add new Application!",Toast.LENGTH_SHORT).show()
         }
 
         // Set up bottom navigation
