@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -48,4 +49,17 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    //    <--Splash Screen Dependency -->
+    val splash_version = "1.0.1"
+    implementation("androidx.core:core-splashscreen:$splash_version")
+
+    //    <--Navigation Library -->
+    val nav_version = "2.8.1"
+    implementation("androidx.navigation:navigation-fragment:$nav_version")
+    implementation("androidx.navigation:navigation-ui:$nav_version")
+
+    //    <--Material Library -->
+    val material_version = "1.5.0"
+    implementation ("com.google.android.material:material:$material_version")
 }
