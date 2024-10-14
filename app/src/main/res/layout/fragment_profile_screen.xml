@@ -70,7 +70,7 @@
                 android:paddingStart="20dp"
                 android:layout_gravity="center"
                 android:text="Sign out"
-                android:textColor="@android:color/holo_red_dark"
+                android:textColor="@android:color/holo_red_light"
                 android:paddingEnd="20dp"
                 android:onClick="signoutUser"/>
 

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".EditFormScreenFragment">
 
-    <!-- Job Description -->
+    <!-- Top App Bar -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -71,17 +71,18 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
+                <!-- Status Label and Spinner -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="Application Status"
                         android:textStyle="bold" />
-                    
+
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -89,6 +90,8 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"/>
                 </RelativeLayout>
+
+                <!-- Date Applied Section -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -112,6 +115,8 @@
                         android:text="Oct 8,2024"
                         android:paddingEnd="20dp" />
                 </RelativeLayout>
+
+                <!-- Latest Reply Date Section -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -136,10 +141,37 @@
                         android:paddingEnd="20dp" />
                 </RelativeLayout>
 
+                <!-- Interview Date Section (hidden by default) -->
+                <RelativeLayout
+                    android:id="@+id/lblInterviewDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Interview date"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnInterviewDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/round_back_white_secondary_20"
+                        android:paddingStart="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="center"
+                        android:text="Oct 8,2024"
+                        android:paddingEnd="20dp" />
+                </RelativeLayout>
+
 
             </LinearLayout>
 
-            <!-- Application Status-->
+            <!-- Job Information Section -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -156,6 +188,7 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
+                <!-- Company Name Input -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -164,6 +197,9 @@
                         android:id="@+id/tfCompanyName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:endIconDrawable="@drawable/ic_arrow_north_east"
+                        app:endIconTint="@color/white"
+                        app:endIconMode="clear_text"
                         android:hint="Company name">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -174,9 +210,13 @@
 
                 </RelativeLayout>
 
+                <!-- Job Title Input -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:endIconDrawable="@drawable/ic_arrow_north_east"
+                    app:endIconTint="@color/white"
+                    app:endIconMode="clear_text"
                     android:layout_marginTop="10dp">
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -192,6 +232,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
                 </RelativeLayout>
 
+                <!-- Location Input -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -201,6 +242,9 @@
                         android:id="@+id/tfLocation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:endIconDrawable="@drawable/ic_arrow_north_east"
+                        app:endIconTint="@color/white"
+                        app:endIconMode="clear_text"
                         android:hint="Location">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -210,6 +254,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
                 </RelativeLayout>
 
+                <!-- Link Input with Clear Icon -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -232,6 +277,7 @@
                 </RelativeLayout>
             </LinearLayout>
 
+            <!-- Delete Application Button -->
             <LinearLayout
                 android:id="@+id/btnDeleteApplication"
                 android:background="@drawable/round_back_white_20"
@@ -269,9 +315,6 @@
 
                 </RelativeLayout>
             </LinearLayout>
-
         </LinearLayout>
-
-
     </ScrollView>
 </LinearLayout>
