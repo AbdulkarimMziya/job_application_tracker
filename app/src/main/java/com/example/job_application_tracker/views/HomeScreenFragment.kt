@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.job_application_tracker.EditFormScreenFragment
+import androidx.core.view.isVisible
 import com.example.job_application_tracker.R
 import com.example.job_application_tracker.databinding.FragmentHomeScreenBinding
 
 
-class HomeScreenFragment : Fragment() {
+class HomeScreenFragment : Fragment(), BottomAppBarVisibility {
     private lateinit var homeScreenBinding: FragmentHomeScreenBinding
 
     // Bottom Nav fragments objects
@@ -41,7 +41,6 @@ class HomeScreenFragment : Fragment() {
             // Create the new fragment instance
             // Slide up entry transition, Slide down exit transition
             loadFragment(editFormScreenFragment)
-//          Toast.makeText(requireContext(),"Add new Application!",Toast.LENGTH_SHORT).show()
         }
 
         // Set up bottom navigation
@@ -73,11 +72,25 @@ class HomeScreenFragment : Fragment() {
         return homeScreenBinding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        homeScreenBinding.coordinatorLayout.isVisible = true // Show BottomAppBar when fragment resumes
+    }
+
     private fun loadFragment(fragment: Fragment) {
         // Replace the current fragment with the new one
         val transaction = childFragmentManager.beginTransaction()
         transaction.replace(R.id.homeScreenContainer, fragment)
+        transaction.addToBackStack(null)
         transaction.commit()
+    }
+
+    override fun showBottomAppBar() {
+        homeScreenBinding.coordinatorLayout.isVisible = true
+    }
+
+    override fun hideBottomAppBar() {
+        homeScreenBinding.coordinatorLayout.isVisible = false
     }
 
 }
