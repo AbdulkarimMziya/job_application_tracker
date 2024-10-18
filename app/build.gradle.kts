@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.devtools.ksp")
+    id ("kotlin-parcelize")
 }
 
 android {
@@ -62,4 +64,22 @@ dependencies {
     //    <--Material Library -->
     val material_version = "1.5.0"
     implementation ("com.google.android.material:material:$material_version")
+
+    // <--ROOM -->
+    val roomVersion = "2.6.1"
+    implementation ("androidx.room:room-runtime:$roomVersion")
+    ksp ("androidx.room:room-compiler:$roomVersion")
+    // Annotation processor
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation ("androidx.room:room-ktx:$roomVersion")
+
+    // Life Cycle Arch
+    val lifecycleVersion = "2.8.6"
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
 }
