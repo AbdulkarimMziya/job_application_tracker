@@ -18,4 +18,8 @@ class ApplicationListScreenFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_application_list_screen, container, false)
     }
 
+    override fun onResume() {
+        super.onResume()
+        (parentFragment as? BottomAppBarVisibility)?.showBottomAppBar()
+    }
 }

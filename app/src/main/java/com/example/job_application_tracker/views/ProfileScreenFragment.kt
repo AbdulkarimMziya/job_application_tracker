@@ -17,4 +17,9 @@ class ProfileScreenFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile_screen, container, false)
     }
+
+    override fun onResume() {
+        super.onResume()
+        (parentFragment as? BottomAppBarVisibility)?.showBottomAppBar()
+    }
 }
