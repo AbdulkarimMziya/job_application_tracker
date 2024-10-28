@@ -14,4 +14,7 @@ interface JobApplicationDao {
 
     @Query("SELECT * FROM job_application")
     fun getAllApplications(): LiveData<List<JobApplication>>
+
+    @Query("SELECT COUNT(id) FROM job_application ")
+    fun getApplicationCount(): LiveData<Int>
 }

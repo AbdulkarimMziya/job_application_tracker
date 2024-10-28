@@ -1,17 +1,18 @@
-package com.example.job_application_tracker
+package com.example.job_application_tracker.views
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.job_application_tracker.R
 import com.example.job_application_tracker.app_interfaces.BottomAppBarVisibility
 import com.example.job_application_tracker.app_interfaces.FragmentNavigation
 import com.example.job_application_tracker.databinding.ActivityMainBinding
-import com.example.job_application_tracker.fragments.AddApplicationFragment
-import com.example.job_application_tracker.fragments.ApplicationScreenFragment
-import com.example.job_application_tracker.fragments.HomeScreenFragment
-import com.example.job_application_tracker.fragments.ProfileScreenFragment
+import com.example.job_application_tracker.views.fragments.AddApplicationFragment
+import com.example.job_application_tracker.views.fragments.ApplicationScreenFragment
+import com.example.job_application_tracker.views.fragments.HomeScreenFragment
+import com.example.job_application_tracker.views.fragments.ProfileScreenFragment
 
 
 class MainActivity : AppCompatActivity(), BottomAppBarVisibility,FragmentNavigation {

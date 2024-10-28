@@ -14,11 +14,13 @@ class JobApplicationViewModel(application: Application) : AndroidViewModel(appli
     val readAllJobApplications: LiveData<List<JobApplication>>
     private val repository: JobApplicationRepository
 
+    val applicationCount: LiveData<Int>
 
     init {
         val jobApplicationDao = JobApplicationDatabase.getDatabase(application).jobApplicationDao()
         repository = JobApplicationRepository(jobApplicationDao)
         readAllJobApplications = repository.allJobApplications
+        applicationCount = repository.applicationCount
     }
 
     fun addJobApplication(jobApplication: JobApplication){
@@ -26,4 +28,5 @@ class JobApplicationViewModel(application: Application) : AndroidViewModel(appli
             repository.insert(jobApplication)
         }
     }
+
 }
