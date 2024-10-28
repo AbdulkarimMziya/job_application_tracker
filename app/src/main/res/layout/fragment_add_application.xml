@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".views.EditFormScreenFragment">
+    tools:context=".fragments.AddApplicationFragment">
 
     <!-- Top App Bar -->
     <RelativeLayout
@@ -86,6 +86,7 @@
                         android:textStyle="bold" />
 
                     <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spinnerApplicationStatus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:entries="@array/application_status"
@@ -306,6 +307,7 @@
                         app:tint="@android:color/holo_red_light"/>
 
                     <TextView
+                        android:id="@+id/tvDelete"
                         android:layout_marginStart="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
