@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.job_application_tracker.R
 import com.example.job_application_tracker.app_interfaces.BottomAppBarVisibility
+import com.example.job_application_tracker.app_interfaces.FormFragment
 import com.example.job_application_tracker.app_interfaces.FragmentNavigation
 import com.example.job_application_tracker.databinding.FragmentAddApplicationBinding
 import com.example.job_application_tracker.model.JobApplication
@@ -20,7 +21,7 @@ import com.example.job_application_tracker.viewmodel.JobApplicationViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AddApplicationFragment : Fragment() {
+class AddApplicationFragment : Fragment(), FormFragment {
     private lateinit var addApplicationBinding: FragmentAddApplicationBinding
      private lateinit var mJobApplicationViewModel: JobApplicationViewModel
 
@@ -184,5 +185,9 @@ class AddApplicationFragment : Fragment() {
         // Save to ViewModel
         mJobApplicationViewModel.addJobApplication(jobApplication)
         Toast.makeText(requireContext(), "Application saved successfully!", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun isFormFragment(): Boolean {
+        return true
     }
 }

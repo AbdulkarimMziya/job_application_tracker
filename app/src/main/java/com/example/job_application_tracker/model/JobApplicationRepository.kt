@@ -12,6 +12,10 @@ class JobApplicationRepository(val jobApplicationDao: JobApplicationDao) {
         jobApplicationDao.insert(jobApplication)
     }
 
+    suspend fun delete(jobApplication: JobApplication){
+        jobApplicationDao.delete(jobApplication)
+    }
+
     suspend fun getCountByStatus(status: String): Int {
         return jobApplicationDao.getCountByStatus(status)
     }

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.job_application_tracker.R
 import com.example.job_application_tracker.app_interfaces.BottomAppBarVisibility
+import com.example.job_application_tracker.app_interfaces.FormFragment
 import com.example.job_application_tracker.app_interfaces.FragmentNavigation
 import com.example.job_application_tracker.databinding.ActivityMainBinding
 import com.example.job_application_tracker.views.fragments.AddApplicationFragment
@@ -73,6 +74,20 @@ class MainActivity : AppCompatActivity(), BottomAppBarVisibility,FragmentNavigat
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val fragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView)
+
+        // Check if the current fragment is a form fragment
+        if (fragment is FormFragment && fragment.isFormFragment()) {
+            // If it's a form fragment, pop the back stack
+            super.onBackPressed()
+        } else {
+            // If it's not a form fragment, display the bottom navigation bar
+            showBottomAppBar()
+            super.onBackPressed()
+        }
+    }
 
     override fun loadFragment(fragment: Fragment) {
         // Replace the current fragment with the new one

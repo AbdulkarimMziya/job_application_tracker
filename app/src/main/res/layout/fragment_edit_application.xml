@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".views.fragments.AddApplicationFragment">
+    tools:context=".views.fragments.EditApplicationFragment">
 
     <!-- Top App Bar -->
     <RelativeLayout
@@ -86,7 +86,7 @@
                         android:textStyle="bold" />
 
                     <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/spinnerApplicationStatus"
+                        android:id="@+id/spinnerEditApplicationStatus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:entries="@array/application_status"
@@ -108,7 +108,7 @@
                         android:textStyle="bold" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnPickDate"
+                        android:id="@+id/btnEditPickDate"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:background="@drawable/round_back_white_secondary_20"
@@ -133,7 +133,7 @@
                         android:textStyle="bold" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnReplyDate"
+                        android:id="@+id/btnEditReplyDate"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:background="@drawable/round_back_white_secondary_20"
@@ -197,7 +197,7 @@
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tfCompanyName"
+                        android:id="@+id/tfEditCompanyName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:endIconDrawable="@drawable/ic_arrow_north_east"
@@ -223,7 +223,7 @@
                     android:layout_marginTop="10dp">
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tfJobTittle"
+                        android:id="@+id/tfEditJobTittle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Job title">
@@ -242,7 +242,7 @@
                     android:layout_marginTop="10dp">
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tfLocation"
+                        android:id="@+id/tfEditLocation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:endIconDrawable="@drawable/ic_arrow_north_east"
@@ -264,7 +264,7 @@
                     android:layout_marginTop="10dp">
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tfLink"
+                        android:id="@+id/tfEditLink"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:endIconDrawable="@drawable/ic_arrow_north_east"
@@ -277,6 +277,46 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent" />
                     </com.google.android.material.textfield.TextInputLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!-- Delete Application Button -->
+            <LinearLayout
+                android:id="@+id/btnDeleteApplication"
+                android:background="@drawable/round_back_white_20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/icDelete"
+                        android:background="@drawable/round_back_white_secondary_20"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_delete"
+                        android:padding="12dp"
+                        android:layout_centerVertical="true"
+                        app:tint="@android:color/holo_red_light"/>
+
+                    <TextView
+                        android:id="@+id/tvDelete"
+                        android:layout_marginStart="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Delete Application"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textStyle="bold"
+                        android:layout_toEndOf="@id/icDelete"/>
+
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>

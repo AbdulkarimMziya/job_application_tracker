@@ -1,21 +1,27 @@
 package com.example.job_application_tracker.views.fragments
 
+import SwipeToDeleteCallback
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.job_application_tracker.R
+import com.example.job_application_tracker.app_interfaces.BottomAppBarVisibility
 import com.example.job_application_tracker.databinding.FragmentAddApplicationBinding
 import com.example.job_application_tracker.databinding.FragmentApplicationScreenBinding
 import com.example.job_application_tracker.viewmodel.JobApplicationViewModel
 import com.example.job_application_tracker.viewmodel.JobListAdapter
+import com.example.job_application_tracker.views.MainActivity
 
 class ApplicationScreenFragment : Fragment() {
     private lateinit var applicationScreenBinding: FragmentApplicationScreenBinding
@@ -37,8 +43,6 @@ class ApplicationScreenFragment : Fragment() {
         init()
 
 
-
-
         return applicationScreenBinding.root
     }
 
@@ -51,12 +55,26 @@ class ApplicationScreenFragment : Fragment() {
         mJobApplicationViewModel = ViewModelProvider(this).get(JobApplicationViewModel::class.java)
 
         // Initialize the RecyclerView and Adapter
-        jobListAdapter = JobListAdapter { jobApplication ->
-            // Handle item click
-        }
+        jobListAdapter = JobListAdapter(
+            onItemClick = { jobApplication ->  },
+            deleteJobApplication = { jobApplication ->
+                mJobApplicationViewModel.delete(jobApplication)
+            }
+        )
 
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = jobListAdapter
+
+        // Attach the ItemTouchHelper for swipe to delete
+        val itemTouchHelper = ItemTouchHelper(
+            SwipeToDeleteCallback(
+                jobListAdapter,
+                ContextCompat.getDrawable(requireContext(), R.drawable.red_background)!!,
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_delete)!!,
+                Color.RED
+            )
+        )
+        itemTouchHelper.attachToRecyclerView(recyclerView)
 
         // Observe the job applications LiveData
         mJobApplicationViewModel.readAllJobApplications.observe(viewLifecycleOwner) { jobApplications ->
@@ -75,6 +93,11 @@ class ApplicationScreenFragment : Fragment() {
 
         // Set up the SearchView listener
         setupSearchView()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (parentFragment as? BottomAppBarVisibility)?.showBottomAppBar()
     }
 
     private fun setupSearchView() {

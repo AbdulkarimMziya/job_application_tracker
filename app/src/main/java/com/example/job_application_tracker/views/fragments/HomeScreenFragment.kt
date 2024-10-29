@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.job_application_tracker.app_interfaces.BottomAppBarVisibility
 import com.example.job_application_tracker.databinding.FragmentHomeScreenBinding
 import com.example.job_application_tracker.viewmodel.JobApplicationViewModel
+import com.example.job_application_tracker.views.MainActivity
 
 
 class HomeScreenFragment : Fragment() {

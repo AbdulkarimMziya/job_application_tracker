@@ -1,17 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/id_profile_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/id_profile_fragment"
+    android:orientation="vertical"
     tools:context=".views.fragments.ProfileScreenFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- Top App Bar -->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Profile"
-        android:textSize="30sp"/>
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.Placeholder
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile Settings"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- Night Mode -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DISPLAY"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="28dp"/>
+            <LinearLayout
+                android:background="@drawable/round_back_white_20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/icNightMode"
+                        android:background="@drawable/round_back_white_secondary_20"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_nightmode"
+                        android:padding="12dp"
+                        android:layout_centerVertical="true"
+                        app:tint="@color/white"/>
+
+                    <TextView
+                        android:layout_marginStart="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Night Mode"
+                        android:textStyle="bold"
+                        android:layout_toEndOf="@id/icNightMode"/>
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/btnActivateNightMode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:switchMinWidth="50dp" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!-- Language Section-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LANGUAGE PREFERENCE"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="28dp"/>
+            <LinearLayout
+                android:background="@drawable/round_back_white_20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/ivLanguage"
+                        android:background="@drawable/round_back_white_secondary_20"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_language"
+                        android:padding="12dp"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:layout_marginStart="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Language"
+                        android:textStyle="bold"
+                        android:layout_toEndOf="@id/ivLanguage"/>
+
+                    <ImageView
+                        android:id="@+id/btnLanguage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_arrow_right"
+                        app:tint="@color/white"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!--  Support Us Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SUPPORT US"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="28dp"/>
+            <LinearLayout
+                android:background="@drawable/round_back_white_20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Follow Abdul -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/ivFollowMe"
+                        android:background="@drawable/round_back_white_secondary_20"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_person_raised_hand"
+                        android:padding="12dp"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:layout_marginStart="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Follow Abdul"
+                        android:textStyle="bold"
+                        android:layout_toEndOf="@id/ivFollowMe"/>
+
+                    <ImageView
+                        android:id="@+id/btnOpenAbdulLink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_arrow_north_east"
+                        app:tint="@android:color/holo_blue_light"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
+
+                <!-- Follow Gabriel -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:id="@+id/ivFollowMe1"
+                        android:background="@drawable/round_back_white_secondary_20"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_person_raised_hand"
+                        android:padding="12dp"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:layout_marginStart="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Follow Gabriel"
+                        android:textStyle="bold"
+                        android:layout_toEndOf="@id/ivFollowMe1"/>
+
+                    <ImageView
+                        android:id="@+id/btnOpenGabrielLink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_arrow_north_east"
+                        app:tint="@android:color/holo_blue_light"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
+
+                <!-- Rate App -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:id="@+id/ivReview"
+                        android:background="@drawable/round_back_white_secondary_20"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_star_rate"
+                        android:padding="12dp"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:layout_marginStart="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Review on the Play Store"
+                        android:textStyle="bold"
+                        android:layout_toEndOf="@id/ivReview"/>
+
+                    <ImageView
+                        android:id="@+id/btnPlayStoreLink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_arrow_north_east"
+                        app:tint="@color/white"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

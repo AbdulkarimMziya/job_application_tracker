@@ -11,8 +11,10 @@ import com.example.job_application_tracker.model.JobApplication
 import java.text.SimpleDateFormat
 import java.util.*
 
-class JobListAdapter(private val onItemClick: (JobApplication) -> Unit) :
-    ListAdapter<JobApplication, JobListAdapter.MyViewHolder>(JobApplicationDiffCallback()) {
+class JobListAdapter(
+    private val onItemClick: (JobApplication) -> Unit,
+    private val deleteJobApplication: (JobApplication) -> Unit
+) : ListAdapter<JobApplication, JobListAdapter.MyViewHolder>(JobApplicationDiffCallback()) {
 
     class MyViewHolder(private val binding: ListItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(jobApplication: JobApplication, onItemClick: (JobApplication) -> Unit) {
@@ -60,6 +62,13 @@ class JobListAdapter(private val onItemClick: (JobApplication) -> Unit) :
         return currentList.size // Returns the size of the current list
     }
 
+    fun onItemSwipe(position: Int) {
+        val jobApplication = getItem(position)
+        deleteJobApplication(jobApplication) // Call the delete function
+        notifyItemRemoved(position)
+    }
+
+
     // Method to update the job list
     fun updateJobList(newJobList: List<JobApplication>) {
         submitList(newJobList) // Use ListAdapter's submitList to handle updates
@@ -75,4 +84,6 @@ class JobListAdapter(private val onItemClick: (JobApplication) -> Unit) :
             return oldItem == newItem // Compare the content
         }
     }
+
+
 }

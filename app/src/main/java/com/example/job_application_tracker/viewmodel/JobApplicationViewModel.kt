@@ -30,6 +30,12 @@ class JobApplicationViewModel(application: Application) : AndroidViewModel(appli
         }
     }
 
+    fun delete(jobApplication: JobApplication) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.delete(jobApplication)
+        }
+    }
+
     fun getCountOfRejectedApplications(): LiveData<Int> {
         val countLiveData = MutableLiveData<Int>()
         viewModelScope.launch {
