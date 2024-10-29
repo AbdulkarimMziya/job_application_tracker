@@ -12,4 +12,8 @@ class JobApplicationRepository(val jobApplicationDao: JobApplicationDao) {
         jobApplicationDao.insert(jobApplication)
     }
 
+    suspend fun getCountByStatus(status: String): Int {
+        return jobApplicationDao.getCountByStatus(status)
+    }
+
 }

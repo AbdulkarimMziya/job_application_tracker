@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.job_application_tracker.R
 import com.example.job_application_tracker.databinding.ListItemLayoutBinding
 import com.example.job_application_tracker.model.JobApplication
 import java.text.SimpleDateFormat
@@ -18,7 +19,28 @@ class JobListAdapter(private val onItemClick: (JobApplication) -> Unit) :
             binding.tvListItemCompanyName.text = jobApplication.companyName
             binding.tvListItemJobDesc.text = jobApplication.jobTitle
             binding.tvListItemDate.text = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date(jobApplication.dateApplied))
+
+
             binding.tvListItemStatus.text = jobApplication.status
+
+            when (jobApplication.status.lowercase()) {
+                "applied" -> {
+                    binding.tvListItemStatus.setBackgroundResource(R.drawable.round_status_yellow_secondary)
+                }
+                "waiting" -> {
+                    binding.tvListItemStatus.setBackgroundResource(R.drawable.round_back_white_secondary_10)
+                }
+                "rejected" -> {
+                    binding.tvListItemStatus.setBackgroundResource(R.drawable.round_status_red_secondary)
+                }
+                "interview" -> {
+                    binding.tvListItemStatus.setBackgroundResource(R.drawable.round_status_blue_secondary)
+                }
+                "offer" -> {
+                    binding.tvListItemStatus.setBackgroundResource(R.drawable.round_status_green_secondary
+                    )
+                }
+            }
 
             binding.root.setOnClickListener { onItemClick(jobApplication) }
         }
@@ -38,7 +60,7 @@ class JobListAdapter(private val onItemClick: (JobApplication) -> Unit) :
         return currentList.size // Returns the size of the current list
     }
 
-    // Method to update the job list (optional if using ListAdapter)
+    // Method to update the job list
     fun updateJobList(newJobList: List<JobApplication>) {
         submitList(newJobList) // Use ListAdapter's submitList to handle updates
     }

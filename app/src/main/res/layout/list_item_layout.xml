@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginVertical="8dp"
+    android:layout_marginVertical="2dp"
     android:layout_marginHorizontal="10dp"
     android:padding="8dp"
     android:background="@drawable/round_back_white_secondary_10">
@@ -50,16 +50,6 @@
         android:gravity="center_vertical">
 
         <TextView
-            android:id="@+id/tvListItemDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Applied: 23 OCT 2024"
-            android:textStyle="bold"
-            android:textSize="12sp"
-            android:maxLines="1"
-            android:maxLength="20"/>
-
-        <TextView
             android:id="@+id/tvListItemStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -71,6 +61,17 @@
             android:text="Waiting"
             android:textSize="12sp"
             android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:id="@+id/tvListItemDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Applied: 23 OCT 2024"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:maxLength="20"/>
 
     </LinearLayout>
 

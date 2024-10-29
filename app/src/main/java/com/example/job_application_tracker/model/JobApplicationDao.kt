@@ -17,4 +17,7 @@ interface JobApplicationDao {
 
     @Query("SELECT COUNT(id) FROM job_application ")
     fun getApplicationCount(): LiveData<Int>
+
+    @Query("SELECT COUNT(*) FROM job_application WHERE status = :status")
+    suspend fun getCountByStatus(status: String): Int
 }
