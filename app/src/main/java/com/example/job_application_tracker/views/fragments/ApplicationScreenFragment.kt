@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -56,7 +57,9 @@ class ApplicationScreenFragment : Fragment() {
 
         // Initialize the RecyclerView and Adapter
         jobListAdapter = JobListAdapter(
-            onItemClick = { jobApplication ->  },
+            onItemClick = { jobApplication ->
+                Toast.makeText(requireContext(),"${jobApplication.id} clicked!!",Toast.LENGTH_SHORT).show()
+            },
             deleteJobApplication = { jobApplication ->
                 mJobApplicationViewModel.delete(jobApplication)
             }

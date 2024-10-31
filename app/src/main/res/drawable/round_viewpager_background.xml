@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Shadow Layer for Elevation -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#66000000"/> <!-- Semi-transparent black for shadow -->
+            <corners android:radius="4dp"/> <!-- Optional: rounded corners -->
+        </shape>
+    </item>
+
+    <!-- Main Background Layer -->
+    <item android:top="4dp"> <!-- Elevate the border -->
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent"/> <!-- Background color -->
+            <stroke android:width="2dp" android:color="#1EFFFFFF"/> <!-- Border color -->
+            <corners android:radius="4dp"/> <!-- Optional: rounded corners -->
+        </shape>
+    </item>
+
+</layer-list>

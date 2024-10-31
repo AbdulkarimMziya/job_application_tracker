@@ -6,15 +6,18 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.job_application_tracker.R
+import com.example.job_application_tracker.app_interfaces.FormFragment
+import com.example.job_application_tracker.app_interfaces.FragmentNavigation
 import com.example.job_application_tracker.databinding.ListItemLayoutBinding
 import com.example.job_application_tracker.model.JobApplication
+import com.example.job_application_tracker.views.fragments.ApplicationScreenFragment
 import java.text.SimpleDateFormat
 import java.util.*
 
 class JobListAdapter(
     private val onItemClick: (JobApplication) -> Unit,
     private val deleteJobApplication: (JobApplication) -> Unit
-) : ListAdapter<JobApplication, JobListAdapter.MyViewHolder>(JobApplicationDiffCallback()) {
+) : ListAdapter<JobApplication, JobListAdapter.MyViewHolder>(JobApplicationDiffCallback()), FormFragment {
 
     class MyViewHolder(private val binding: ListItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(jobApplication: JobApplication, onItemClick: (JobApplication) -> Unit) {
@@ -84,6 +87,4 @@ class JobListAdapter(
             return oldItem == newItem // Compare the content
         }
     }
-
-
 }

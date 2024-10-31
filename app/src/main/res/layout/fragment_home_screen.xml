@@ -30,11 +30,12 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:weightSum="2"
         android:padding="20dp"
+        android:weightSum="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
@@ -43,39 +44,39 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:layout_weight="1"
+            android:orientation="horizontal"
             android:weightSum="2">
 
             <!--  R 1-1  -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/round_back_yellow_secondary_10"
-                android:padding="4dp"
                 android:layout_marginEnd="8dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:background="@drawable/round_back_yellow_secondary_10"
+                android:padding="4dp">
 
                 <androidx.constraintlayout.widget.Placeholder
                     android:layout_width="0dp"
-                    android:layout_height="150dp"/>
+                    android:layout_height="100dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="Applied"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvTotalApplications"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
+                    android:textColor="@color/white"
                     android:textSize="35sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"/>
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 
@@ -83,31 +84,31 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/round_back_red_secondary_10"
-                android:padding="4dp"
                 android:layout_marginStart="8dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:background="@drawable/round_back_red_secondary_10"
+                android:padding="4dp">
 
                 <androidx.constraintlayout.widget.Placeholder
                     android:layout_width="0dp"
-                    android:layout_height="150dp"/>
+                    android:layout_height="100dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="Rejected"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvRejectedApplications"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
+                    android:textColor="@color/white"
                     android:textSize="35sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"/>
+                    android:textStyle="bold" />
 
             </RelativeLayout>
         </LinearLayout>
@@ -116,40 +117,40 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:layout_marginTop="12dp"
             android:layout_weight="1"
+            android:orientation="horizontal"
             android:weightSum="2">
 
             <!--  R 2-1  -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/round_back_blue_secondary_10"
-                android:padding="4dp"
                 android:layout_marginEnd="8dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:background="@drawable/round_back_blue_secondary_10"
+                android:padding="4dp">
 
                 <androidx.constraintlayout.widget.Placeholder
                     android:layout_width="0dp"
-                    android:layout_height="150dp"/>
+                    android:layout_height="100dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="Interviews"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvTotalInterviews"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
+                    android:textColor="@color/white"
                     android:textSize="35sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"/>
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 
@@ -157,33 +158,58 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/round_back_green_secondary_10"
-                android:padding="4dp"
                 android:layout_marginStart="8dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:background="@drawable/round_back_green_secondary_10"
+                android:padding="4dp">
 
                 <androidx.constraintlayout.widget.Placeholder
                     android:layout_width="0dp"
-                    android:layout_height="150dp"/>
+                    android:layout_height="100dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="Offers"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvTotalOffers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
+                    android:textColor="@color/white"
                     android:textSize="35sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"/>
+                    android:textStyle="bold" />
             </RelativeLayout>
         </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Viewpager  -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/round_viewpager_background"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 

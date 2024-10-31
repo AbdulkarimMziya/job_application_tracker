@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity(), BottomAppBarVisibility,FragmentNavigat
     private lateinit var profileScreenFragment: ProfileScreenFragment
     private lateinit var addApplicationFragment: AddApplicationFragment
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -72,22 +73,10 @@ class MainActivity : AppCompatActivity(), BottomAppBarVisibility,FragmentNavigat
                 else -> false
             }
         }
+
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        val fragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView)
 
-        // Check if the current fragment is a form fragment
-        if (fragment is FormFragment && fragment.isFormFragment()) {
-            // If it's a form fragment, pop the back stack
-            super.onBackPressed()
-        } else {
-            // If it's not a form fragment, display the bottom navigation bar
-            showBottomAppBar()
-            super.onBackPressed()
-        }
-    }
 
     override fun loadFragment(fragment: Fragment) {
         // Replace the current fragment with the new one

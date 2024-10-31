@@ -6,4 +6,5 @@
     </style>
 
     <style name="Theme.Job_application_tracker" parent="Base.Theme.Job_application_tracker" />
+
 </resources>
