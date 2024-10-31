@@ -1,4 +1,4 @@
-package com.example.job_application_tracker.viewmodel
+package com.example.job_application_tracker.viewmodel.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

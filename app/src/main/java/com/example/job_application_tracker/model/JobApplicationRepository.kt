@@ -22,4 +22,9 @@ class JobApplicationRepository(val jobApplicationDao: JobApplicationDao) {
         return jobApplicationDao.getCountByStatus(status)
     }
 
+    fun getUpcomingInterviews(): LiveData<List<JobApplication>> {
+        val currentTime = System.currentTimeMillis()
+        return jobApplicationDao.getUpcomingInterviews(currentTime)
+    }
+
 }

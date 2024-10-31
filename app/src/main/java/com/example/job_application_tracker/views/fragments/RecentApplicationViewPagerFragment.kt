@@ -9,15 +9,14 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.job_application_tracker.R
 import com.example.job_application_tracker.databinding.FragmentRecentApplicationViewPagerBinding
 import com.example.job_application_tracker.model.JobApplication
-import com.example.job_application_tracker.viewmodel.JobApplicationViewModel
-import com.example.job_application_tracker.viewmodel.JobListAdapter
+import com.example.job_application_tracker.viewmodel.adapters.JobListAdapter
+import com.example.job_application_tracker.viewmodel.RecentApplicationViewModel
 
 
 class RecentApplicationViewPagerFragment : Fragment() {
-    private lateinit var mViewModel: JobApplicationViewModel
+    private lateinit var mViewModel: RecentApplicationViewModel
     private lateinit var adapter: JobListAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var noApplicationsTextView: TextView
@@ -41,7 +40,7 @@ class RecentApplicationViewPagerFragment : Fragment() {
         initRecyclerView()
 
         // Set up the ViewModel
-        mViewModel = ViewModelProvider(requireActivity()).get(JobApplicationViewModel::class.java)
+        mViewModel = ViewModelProvider(requireActivity()).get(RecentApplicationViewModel::class.java)
 
         // Observe recent applications
         mViewModel.recentApplications.observe(viewLifecycleOwner) { applications ->

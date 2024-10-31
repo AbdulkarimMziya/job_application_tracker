@@ -17,9 +17,6 @@ class JobApplicationViewModel(application: Application) : AndroidViewModel(appli
 
     val applicationCount: LiveData<Int>
 
-    private val _recentApplications = MutableLiveData<List<JobApplication>>()
-    val recentApplications: LiveData<List<JobApplication>> get() = _recentApplications
-
 
     init {
         val jobApplicationDao = JobApplicationDatabase.getDatabase(application).jobApplicationDao()
@@ -27,16 +24,6 @@ class JobApplicationViewModel(application: Application) : AndroidViewModel(appli
         readAllJobApplications = repository.allJobApplications
         applicationCount = repository.applicationCount
 
-        // Observe all applications and filter
-        repository.recentApplications.observeForever { applications ->
-            filterRecentApplications(applications)
-        }
-    }
-
-    private fun filterRecentApplications(applications: List<JobApplication>) {
-        val oneWeekInMillis = 7 * 24 * 60 * 60 * 1000 // One week in milliseconds
-        val oneWeekAgo = System.currentTimeMillis() - oneWeekInMillis
-        _recentApplications.value = applications.filter { it.dateApplied >= oneWeekAgo }
     }
 
     fun addJobApplication(jobApplication: JobApplication){

@@ -11,7 +11,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.job_application_tracker.app_interfaces.BottomAppBarVisibility
 import com.example.job_application_tracker.databinding.FragmentHomeScreenBinding
 import com.example.job_application_tracker.viewmodel.JobApplicationViewModel
-import com.example.job_application_tracker.viewmodel.ViewPagerAdapter
+import com.example.job_application_tracker.viewmodel.adapters.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 

@@ -2,7 +2,7 @@ import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.job_application_tracker.viewmodel.JobListAdapter
+import com.example.job_application_tracker.viewmodel.adapters.JobListAdapter
 
 class SwipeToDeleteCallback(
     private val adapter: JobListAdapter,

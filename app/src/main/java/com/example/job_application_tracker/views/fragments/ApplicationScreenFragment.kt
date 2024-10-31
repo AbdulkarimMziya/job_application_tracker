@@ -6,23 +6,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.job_application_tracker.R
 import com.example.job_application_tracker.app_interfaces.BottomAppBarVisibility
-import com.example.job_application_tracker.databinding.FragmentAddApplicationBinding
 import com.example.job_application_tracker.databinding.FragmentApplicationScreenBinding
 import com.example.job_application_tracker.viewmodel.JobApplicationViewModel
-import com.example.job_application_tracker.viewmodel.JobListAdapter
-import com.example.job_application_tracker.views.MainActivity
+import com.example.job_application_tracker.viewmodel.adapters.JobListAdapter
 
 class ApplicationScreenFragment : Fragment() {
     private lateinit var applicationScreenBinding: FragmentApplicationScreenBinding

@@ -1,4 +1,4 @@
-package com.example.job_application_tracker.viewmodel
+package com.example.job_application_tracker.viewmodel.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,11 +7,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.job_application_tracker.R
-import com.example.job_application_tracker.app_interfaces.FormFragment
-import com.example.job_application_tracker.app_interfaces.FragmentNavigation
 import com.example.job_application_tracker.databinding.ListItemLayoutBinding
 import com.example.job_application_tracker.model.JobApplication
-import com.example.job_application_tracker.views.fragments.ApplicationScreenFragment
 import java.text.SimpleDateFormat
 import java.util.*
 

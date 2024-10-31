@@ -13,6 +13,9 @@ interface JobApplicationDao {
     @Insert
     suspend fun insert(jobApplication: JobApplication)
 
+    @Delete
+    suspend fun delete(jobApplication: JobApplication)
+
     @Query("SELECT * FROM job_application ORDER BY date_applied DESC")
     fun getAllApplications(): LiveData<List<JobApplication>>
 
@@ -25,6 +28,6 @@ interface JobApplicationDao {
     @Query("SELECT COUNT(*) FROM job_application WHERE status = :status")
     suspend fun getCountByStatus(status: String): Int
 
-    @Delete
-    suspend fun delete(jobApplication: JobApplication)
+    @Query("SELECT * FROM job_application WHERE status = 'Interview' AND date_of_interview > :currentTime")
+    fun getUpcomingInterviews(currentTime: Long): LiveData<List<JobApplication>>
 }
