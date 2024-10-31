@@ -31,4 +31,14 @@ class JobApplicationRepository(val jobApplicationDao: JobApplicationDao) {
         return jobApplicationDao.searchDatabase(searchQuery)
     }
 
+    fun sortApplications(criteria: String): LiveData<List<JobApplication>> {
+        return when (criteria) {
+            "date_asc" -> jobApplicationDao.getApplicationsSortedByDateAsc()
+            "date_desc" -> jobApplicationDao.getApplicationsSortedByDateDesc()
+            "name_asc" -> jobApplicationDao.getApplicationsSortedByNameAsc()
+            "name_desc" -> jobApplicationDao.getApplicationsSortedByNameDesc()
+            else -> allJobApplications
+        }
+    }
+
 }

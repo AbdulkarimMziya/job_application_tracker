@@ -1,6 +1,8 @@
 package com.example.job_application_tracker.viewmodel
 
 import android.app.Application
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,21 +14,33 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class JobApplicationViewModel(application: Application) : AndroidViewModel(application) {
-    val readAllJobApplications: LiveData<List<JobApplication>>
-    private val repository: JobApplicationRepository
 
+    private val sharedPreferences: SharedPreferences =
+        application.getSharedPreferences("JobAppPrefs", Context.MODE_PRIVATE)
+
+    private val repository: JobApplicationRepository
     val applicationCount: LiveData<Int>
 
+    private val _sortedJobApplications = MutableLiveData<List<JobApplication>>()
+    val sortedJobApplications: LiveData<List<JobApplication>> = _sortedJobApplications
 
     init {
         val jobApplicationDao = JobApplicationDatabase.getDatabase(application).jobApplicationDao()
         repository = JobApplicationRepository(jobApplicationDao)
-        readAllJobApplications = repository.allJobApplications
         applicationCount = repository.applicationCount
 
+        // Load saved sort criteria and apply it
+        val savedSortCriteria = sharedPreferences.getString("sort_criteria", "date_desc") ?: "date_desc"
+        loadSortedApplications(savedSortCriteria)
     }
 
-    fun addJobApplication(jobApplication: JobApplication){
+    private fun loadSortedApplications(criteria: String) {
+        repository.sortApplications(criteria).observeForever { sortedApplications ->
+            _sortedJobApplications.value = sortedApplications
+        }
+    }
+
+    fun addJobApplication(jobApplication: JobApplication) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insert(jobApplication)
         }
@@ -69,4 +83,13 @@ class JobApplicationViewModel(application: Application) : AndroidViewModel(appli
         return repository.searchDatabase("%$searchQuery%")
     }
 
+    fun sortApplications(criteria: String): LiveData<List<JobApplication>> {
+        // Save the selected criteria in SharedPreferences
+        sharedPreferences.edit().putString("sort_criteria", criteria).apply()
+
+        // Load sorted applications based on new criteria
+        loadSortedApplications(criteria)
+
+        return sortedJobApplications
+    }
 }

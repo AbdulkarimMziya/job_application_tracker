@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -77,7 +78,7 @@ class ApplicationScreenFragment : Fragment() {
         itemTouchHelper.attachToRecyclerView(recyclerView)
 
         // Observe the job applications LiveData
-        mJobApplicationViewModel.readAllJobApplications.observe(viewLifecycleOwner) { jobApplications ->
+        mJobApplicationViewModel.sortedJobApplications.observe(viewLifecycleOwner) { jobApplications ->
             jobListAdapter.submitList(jobApplications)
         }
 
@@ -93,6 +94,8 @@ class ApplicationScreenFragment : Fragment() {
 
         // Set up the SearchView listener
         setupSearchView()
+
+        setupSortButtons()
     }
 
     override fun onResume() {
@@ -125,7 +128,7 @@ class ApplicationScreenFragment : Fragment() {
                 // If the search query is empty, reset to the full list
                 if (searchQuery.isEmpty()) {
                     // Show all job applications when there's no query
-                    mJobApplicationViewModel.readAllJobApplications.observe(viewLifecycleOwner) { jobApplications ->
+                    mJobApplicationViewModel.sortedJobApplications.observe(viewLifecycleOwner) { jobApplications ->
                         jobListAdapter.submitList(jobApplications)
                     }
                 } else {
@@ -143,6 +146,29 @@ class ApplicationScreenFragment : Fragment() {
         }
     }
 
+    private fun setupSortButtons() {
+        applicationScreenBinding.btnSortList.setOnClickListener {
+            // Show sorting options dialog
+            val sortingOptions = arrayOf("Date: Newest First", "Date: Oldest First", "Name: A-Z", "Name: Z-A")
+            AlertDialog.Builder(requireContext())
+                .setTitle("Sort by")
+                .setItems(sortingOptions) { _, which ->
+                    val criteria = when (which) {
+                        0 -> "date_desc"
+                        1 -> "date_asc"
+                        2 -> "name_asc"
+                        3 -> "name_desc"
+                        else -> ""
+                    }
+                    // Observe the sorted applications
+                    mJobApplicationViewModel.sortApplications(criteria).observe(viewLifecycleOwner) { sortedApplications ->
+                        jobListAdapter.submitList(sortedApplications)
+                    }
+                }
+                .show()
+        }
+    }
+
     private fun hideTopBar() {
         topBarLayout.visibility = View.GONE
     }
@@ -157,7 +183,7 @@ class ApplicationScreenFragment : Fragment() {
         showTopBar() // Show the top bar again
 
         // Re-observe the full list of job applications
-        mJobApplicationViewModel.readAllJobApplications.observe(viewLifecycleOwner) { jobApplications ->
+        mJobApplicationViewModel.sortedJobApplications.observe(viewLifecycleOwner) { jobApplications ->
             jobListAdapter.submitList(jobApplications)
         }
     }

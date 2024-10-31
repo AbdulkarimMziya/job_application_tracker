@@ -34,4 +34,21 @@ interface JobApplicationDao {
     @Query("SELECT * FROM job_application WHERE company_name LIKE :searchQuery OR job_title LIKE :searchQuery")
     fun searchDatabase(searchQuery: String): LiveData<List<JobApplication>>
 
+
+    @Query("SELECT * FROM job_application ORDER BY date_applied ASC")
+    fun getApplicationsSortedByDateAsc(): LiveData<List<JobApplication>>
+
+    @Query("SELECT * FROM job_application ORDER BY date_applied DESC")
+    fun getApplicationsSortedByDateDesc(): LiveData<List<JobApplication>>
+
+    @Query("SELECT * FROM job_application ORDER BY company_name ASC")
+    fun getApplicationsSortedByNameAsc(): LiveData<List<JobApplication>>
+
+    @Query("SELECT * FROM job_application ORDER BY company_name DESC")
+    fun getApplicationsSortedByNameDesc(): LiveData<List<JobApplication>>
+
+    @Query("SELECT * FROM job_application WHERE status = :status")
+    fun getApplicationsByStatus(status: String): LiveData<List<JobApplication>>
+
+
 }
