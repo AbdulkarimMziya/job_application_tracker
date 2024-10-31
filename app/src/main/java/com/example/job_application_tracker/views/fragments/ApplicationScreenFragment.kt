@@ -62,7 +62,8 @@ class ApplicationScreenFragment : Fragment() {
             },
             deleteJobApplication = { jobApplication ->
                 mJobApplicationViewModel.delete(jobApplication)
-            }
+            },
+            showArrow = true
         )
 
         recyclerView.layoutManager = LinearLayoutManager(context)

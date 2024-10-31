@@ -13,8 +13,11 @@ interface JobApplicationDao {
     @Insert
     suspend fun insert(jobApplication: JobApplication)
 
-    @Query("SELECT * FROM job_application")
+    @Query("SELECT * FROM job_application ORDER BY date_applied DESC")
     fun getAllApplications(): LiveData<List<JobApplication>>
+
+    @Query("SELECT * FROM job_application ORDER BY date_applied DESC LIMIT 3")
+    fun getRecentApplications(): LiveData<List<JobApplication>>
 
     @Query("SELECT COUNT(id) FROM job_application ")
     fun getApplicationCount(): LiveData<Int>

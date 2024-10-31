@@ -1,6 +1,7 @@
 package com.example.job_application_tracker.viewmodel
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -16,14 +17,18 @@ import java.util.*
 
 class JobListAdapter(
     private val onItemClick: (JobApplication) -> Unit,
-    private val deleteJobApplication: (JobApplication) -> Unit
-) : ListAdapter<JobApplication, JobListAdapter.MyViewHolder>(JobApplicationDiffCallback()), FormFragment {
+    private val deleteJobApplication: (JobApplication) -> Unit,
+    private val showArrow: Boolean
+) : ListAdapter<JobApplication, JobListAdapter.MyViewHolder>(JobApplicationDiffCallback()){
 
     class MyViewHolder(private val binding: ListItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(jobApplication: JobApplication, onItemClick: (JobApplication) -> Unit) {
+        fun bind(jobApplication: JobApplication, onItemClick: (JobApplication) -> Unit, showArrow: Boolean) {
             binding.tvListItemCompanyName.text = jobApplication.companyName
             binding.tvListItemJobDesc.text = jobApplication.jobTitle
             binding.tvListItemDate.text = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date(jobApplication.dateApplied))
+
+            // Control arrow visibility based on the parameter
+            binding.btnOpenListItem.visibility = if (showArrow) View.VISIBLE else View.INVISIBLE
 
 
             binding.tvListItemStatus.text = jobApplication.status
@@ -58,7 +63,7 @@ class JobListAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val jobApplication = getItem(position)
-        holder.bind(jobApplication, onItemClick)
+        holder.bind(jobApplication, onItemClick, showArrow)
     }
 
     override fun getItemCount(): Int {
