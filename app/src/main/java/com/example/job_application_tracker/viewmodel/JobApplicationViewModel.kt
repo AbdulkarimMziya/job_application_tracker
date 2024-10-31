@@ -65,4 +65,8 @@ class JobApplicationViewModel(application: Application) : AndroidViewModel(appli
         return countLiveData
     }
 
+    fun searchDatabase(searchQuery: String): LiveData<List<JobApplication>> {
+        return repository.searchDatabase("%$searchQuery%")
+    }
+
 }

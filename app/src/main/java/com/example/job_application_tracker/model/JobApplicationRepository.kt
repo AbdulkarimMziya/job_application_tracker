@@ -27,4 +27,8 @@ class JobApplicationRepository(val jobApplicationDao: JobApplicationDao) {
         return jobApplicationDao.getUpcomingInterviews(currentTime)
     }
 
+    fun searchDatabase(searchQuery: String): LiveData<List<JobApplication>> {
+        return jobApplicationDao.searchDatabase(searchQuery)
+    }
+
 }

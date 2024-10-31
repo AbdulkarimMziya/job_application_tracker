@@ -30,4 +30,8 @@ interface JobApplicationDao {
 
     @Query("SELECT * FROM job_application WHERE status = 'Interview' AND date_of_interview > :currentTime")
     fun getUpcomingInterviews(currentTime: Long): LiveData<List<JobApplication>>
+
+    @Query("SELECT * FROM job_application WHERE company_name LIKE :searchQuery OR job_title LIKE :searchQuery")
+    fun searchDatabase(searchQuery: String): LiveData<List<JobApplication>>
+
 }

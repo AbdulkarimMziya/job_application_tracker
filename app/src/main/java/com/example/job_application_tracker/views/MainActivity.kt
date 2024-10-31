@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity(), BottomAppBarVisibility,FragmentNavigat
     }
 
     override fun hideBottomAppBar() {
-        binding.coordinatorLayout.visibility = View.INVISIBLE
+        binding.coordinatorLayout.visibility = View.GONE
         binding.bottomNavigation.visibility = View.GONE
     }
 }

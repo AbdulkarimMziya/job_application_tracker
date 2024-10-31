@@ -104,22 +104,43 @@ class ApplicationScreenFragment : Fragment() {
         searchView.setOnQueryTextFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 hideTopBar()
+                (activity as? BottomAppBarVisibility)?.hideBottomAppBar()
+                applicationScreenBinding.btnCancelSearch.visibility = View.VISIBLE
             } else {
                 showTopBar()
+                (activity as? BottomAppBarVisibility)?.showBottomAppBar()
+                applicationScreenBinding.btnCancelSearch.visibility = View.GONE
             }
         }
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                // Handle search action here if needed
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                // Handle text changes here if needed
+                // Update the search results as the user types
+                val searchQuery = newText?.trim() ?: ""
+
+                // If the search query is empty, reset to the full list
+                if (searchQuery.isEmpty()) {
+                    // Show all job applications when there's no query
+                    mJobApplicationViewModel.readAllJobApplications.observe(viewLifecycleOwner) { jobApplications ->
+                        jobListAdapter.submitList(jobApplications)
+                    }
+                } else {
+                    // Call the ViewModel to search the database with the updated query
+                    mJobApplicationViewModel.searchDatabase(searchQuery).observe(viewLifecycleOwner) { jobApplications ->
+                        jobListAdapter.submitList(jobApplications)
+                    }
+                }
                 return true
             }
         })
+
+        applicationScreenBinding.btnCancelSearch.setOnClickListener {
+            resetSearchView() // Reset everything when the Cancel button is clicked
+        }
     }
 
     private fun hideTopBar() {
@@ -134,5 +155,10 @@ class ApplicationScreenFragment : Fragment() {
         searchView.setQuery("", false) // Clear the search query
         searchView.clearFocus() // Clear focus from the search view
         showTopBar() // Show the top bar again
+
+        // Re-observe the full list of job applications
+        mJobApplicationViewModel.readAllJobApplications.observe(viewLifecycleOwner) { jobApplications ->
+            jobListAdapter.submitList(jobApplications)
+        }
     }
 }
