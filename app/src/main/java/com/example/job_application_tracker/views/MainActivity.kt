@@ -2,6 +2,7 @@ package com.example.job_application_tracker.views
 
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -31,7 +32,10 @@ class MainActivity : AppCompatActivity(), BottomAppBarVisibility,FragmentNavigat
         setContentView(binding.root)
         init()
 
+        val shakeAnim = AnimationUtils.loadAnimation(this, R.anim.shake)
+
         binding.fab.setOnClickListener {
+            it.startAnimation(shakeAnim)
             hideBottomAppBar()
             loadFragment(addApplicationFragment)
         }
