@@ -3,9 +3,8 @@ package com.example.job_application_tracker.views.fragments
 import SwipeToDeleteCallback
 import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.PopupMenu
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -17,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.job_application_tracker.R
 import com.example.job_application_tracker.app_interfaces.BottomAppBarVisibility
+import com.example.job_application_tracker.app_interfaces.FragmentNavigation
 import com.example.job_application_tracker.databinding.FragmentApplicationScreenBinding
 import com.example.job_application_tracker.viewmodel.JobApplicationViewModel
 import com.example.job_application_tracker.viewmodel.adapters.JobListAdapter
@@ -26,20 +26,21 @@ class ApplicationScreenFragment : Fragment() {
 
     private lateinit var searchView: SearchView
     private lateinit var topBarLayout: View
-
     private lateinit var recyclerView: RecyclerView
     private lateinit var jobListAdapter: JobListAdapter
     private lateinit var mJobApplicationViewModel: JobApplicationViewModel
+
+    private lateinit var popupMenu: PopupMenu
+    private var selectedMenuItemId: Int = R.id.action_sort_newest_oldest  // Default to a selected item
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        applicationScreenBinding = FragmentApplicationScreenBinding.inflate(layoutInflater,container,false)
+        applicationScreenBinding = FragmentApplicationScreenBinding.inflate(layoutInflater, container, false)
 
         init()
-
 
         return applicationScreenBinding.root
     }
@@ -55,7 +56,8 @@ class ApplicationScreenFragment : Fragment() {
         // Initialize the RecyclerView and Adapter
         jobListAdapter = JobListAdapter(
             onItemClick = { jobApplication ->
-                Toast.makeText(requireContext(),"${jobApplication.id} clicked!!",Toast.LENGTH_SHORT).show()
+                // Add your onClick action here
+                Toast.makeText(requireContext(), "Clicked on: ${jobApplication.companyName} - ${jobApplication.jobTitle}", Toast.LENGTH_SHORT).show()
             },
             deleteJobApplication = { jobApplication ->
                 mJobApplicationViewModel.delete(jobApplication)
@@ -95,7 +97,9 @@ class ApplicationScreenFragment : Fragment() {
         // Set up the SearchView listener
         setupSearchView()
 
-        setupSortButtons()
+        applicationScreenBinding.btnSortList.setOnClickListener {
+            showPopupMenu(it)
+        }
     }
 
     override fun onResume() {
@@ -146,26 +150,63 @@ class ApplicationScreenFragment : Fragment() {
         }
     }
 
-    private fun setupSortButtons() {
-        applicationScreenBinding.btnSortList.setOnClickListener {
-            // Show sorting options dialog
-            val sortingOptions = arrayOf("Date: Newest First", "Date: Oldest First", "Name: A-Z", "Name: Z-A")
-            AlertDialog.Builder(requireContext())
-                .setTitle("Sort by")
-                .setItems(sortingOptions) { _, which ->
-                    val criteria = when (which) {
-                        0 -> "date_desc"
-                        1 -> "date_asc"
-                        2 -> "name_asc"
-                        3 -> "name_desc"
-                        else -> ""
-                    }
-                    // Observe the sorted applications
-                    mJobApplicationViewModel.sortApplications(criteria).observe(viewLifecycleOwner) { sortedApplications ->
-                        jobListAdapter.submitList(sortedApplications)
-                    }
+    private fun showPopupMenu(view: View) {
+        // Create the PopupMenu and associate it with the anchor view (the button clicked)
+        popupMenu = PopupMenu(requireContext(), view)
+
+        // Inflate the menu items from the XML file using activity's menuInflater
+        requireActivity().menuInflater.inflate(R.menu.sort_toolbar_menu, popupMenu.menu)
+
+        // Set the checked item manually based on the selectedMenuItemId
+        for (i in 0 until popupMenu.menu.size()) {
+            val item = popupMenu.menu.getItem(i)
+            item.isChecked = item.itemId == selectedMenuItemId
+        }
+
+        // Set a listener for item clicks in the PopupMenu
+        popupMenu.setOnMenuItemClickListener { item ->
+            // Store the selected item ID
+            selectedMenuItemId = item.itemId
+
+            // Uncheck all menu items
+            for (i in 0 until popupMenu.menu.size()) {
+                popupMenu.menu.getItem(i).isChecked = false
+            }
+
+            // Check the selected item
+            item.isChecked = true
+
+            // Apply sorting based on the selected item
+            when (item.itemId) {
+                R.id.action_sort_az -> {
+                    applySorting("name_asc")
+                    true
                 }
-                .show()
+                R.id.action_sort_za -> {
+                    applySorting("name_desc")
+                    true
+                }
+                R.id.action_sort_oldest_newest -> {
+                    applySorting("date_asc")
+                    true
+                }
+                R.id.action_sort_newest_oldest -> {
+                    applySorting("date_desc")
+                    true
+                }
+                else -> false
+            }
+        }
+
+        // Show the PopupMenu
+        popupMenu.show()
+    }
+
+
+    private fun applySorting(criteria: String) {
+        // Perform sorting logic based on the selected criteria
+        mJobApplicationViewModel.sortApplications(criteria).observe(viewLifecycleOwner) { sortedApplications ->
+            jobListAdapter.submitList(sortedApplications)
         }
     }
 

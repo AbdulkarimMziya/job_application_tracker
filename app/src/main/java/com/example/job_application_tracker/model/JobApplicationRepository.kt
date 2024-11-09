@@ -14,6 +14,10 @@ class JobApplicationRepository(val jobApplicationDao: JobApplicationDao) {
         jobApplicationDao.insert(jobApplication)
     }
 
+    suspend fun update(jobApplication: JobApplication){
+        jobApplicationDao.update(jobApplication)
+    }
+
     suspend fun delete(jobApplication: JobApplication){
         jobApplicationDao.delete(jobApplication)
     }

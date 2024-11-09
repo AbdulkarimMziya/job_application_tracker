@@ -46,6 +46,12 @@ class JobApplicationViewModel(application: Application) : AndroidViewModel(appli
         }
     }
 
+    fun updateJobApplication(jobApplication: JobApplication) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.update(jobApplication)
+        }
+    }
+
     fun delete(jobApplication: JobApplication) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.delete(jobApplication)

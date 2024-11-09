@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 
 
 @Dao
@@ -13,8 +14,16 @@ interface JobApplicationDao {
     @Insert
     suspend fun insert(jobApplication: JobApplication)
 
+    @Update
+    suspend fun update(jobApplication: JobApplication)
+
+    @Query("SELECT * FROM job_application WHERE company_name LIKE :searchQuery OR job_title LIKE :searchQuery")
+    fun searchDatabase(searchQuery: String): LiveData<List<JobApplication>>
+
     @Delete
     suspend fun delete(jobApplication: JobApplication)
+
+
 
     @Query("SELECT * FROM job_application ORDER BY date_applied DESC")
     fun getAllApplications(): LiveData<List<JobApplication>>
@@ -31,8 +40,6 @@ interface JobApplicationDao {
     @Query("SELECT * FROM job_application WHERE status = 'Interview' AND date_of_interview > :currentTime")
     fun getUpcomingInterviews(currentTime: Long): LiveData<List<JobApplication>>
 
-    @Query("SELECT * FROM job_application WHERE company_name LIKE :searchQuery OR job_title LIKE :searchQuery")
-    fun searchDatabase(searchQuery: String): LiveData<List<JobApplication>>
 
 
     @Query("SELECT * FROM job_application ORDER BY date_applied ASC")

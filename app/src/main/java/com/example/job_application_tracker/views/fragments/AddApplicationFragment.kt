@@ -23,7 +23,7 @@ import java.util.*
 
 class AddApplicationFragment : Fragment(), FormFragment {
     private lateinit var addApplicationBinding: FragmentAddApplicationBinding
-     private lateinit var mJobApplicationViewModel: JobApplicationViewModel
+    private lateinit var mJobApplicationViewModel: JobApplicationViewModel
 
     private val calendar = Calendar.getInstance()
     private var replyDate: Date = Date()  // Default to today's date

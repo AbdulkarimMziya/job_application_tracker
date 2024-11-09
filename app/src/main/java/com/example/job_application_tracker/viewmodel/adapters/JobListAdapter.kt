@@ -16,7 +16,7 @@ class JobListAdapter(
     private val onItemClick: (JobApplication) -> Unit,
     private val deleteJobApplication: (JobApplication) -> Unit,
     private val showArrow: Boolean
-) : ListAdapter<JobApplication, JobListAdapter.MyViewHolder>(JobApplicationDiffCallback()){
+) : ListAdapter<JobApplication, JobListAdapter.MyViewHolder>(JobApplicationDiffCallback()) {
 
     class MyViewHolder(private val binding: ListItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(jobApplication: JobApplication, onItemClick: (JobApplication) -> Unit, showArrow: Boolean) {
@@ -27,27 +27,17 @@ class JobListAdapter(
             // Control arrow visibility based on the parameter
             binding.btnOpenListItem.visibility = if (showArrow) View.VISIBLE else View.INVISIBLE
 
-
             binding.tvListItemStatus.text = jobApplication.status
+            binding.tvListItemStatus.setBackgroundResource(
 
-            when (jobApplication.status.lowercase()) {
-                "applied" -> {
-                    binding.tvListItemStatus.setBackgroundResource(R.drawable.round_status_yellow_secondary)
-                }
-                "waiting" -> {
-                    binding.tvListItemStatus.setBackgroundResource(R.drawable.round_back_white_secondary_10)
-                }
-                "rejected" -> {
-                    binding.tvListItemStatus.setBackgroundResource(R.drawable.round_status_red_secondary)
-                }
-                "interview" -> {
-                    binding.tvListItemStatus.setBackgroundResource(R.drawable.round_status_blue_secondary)
-                }
-                "offer" -> {
-                    binding.tvListItemStatus.setBackgroundResource(R.drawable.round_status_green_secondary
-                    )
-                }
-            }
+                when (jobApplication.status.lowercase()) {
+                "applied" -> R.drawable.round_status_yellow_secondary
+                "waiting" -> R.drawable.round_back_white_secondary_10
+                "rejected" -> R.drawable.round_status_red_secondary
+                "interview" -> R.drawable.round_status_blue_secondary
+                "offer" -> R.drawable.round_status_green_secondary
+                else -> -1
+            })
 
             binding.root.setOnClickListener { onItemClick(jobApplication) }
         }
@@ -63,9 +53,7 @@ class JobListAdapter(
         holder.bind(jobApplication, onItemClick, showArrow)
     }
 
-    override fun getItemCount(): Int {
-        return currentList.size // Returns the size of the current list
-    }
+    override fun getItemCount(): Int = currentList.size // Returns the size of the current list
 
     fun onItemSwipe(position: Int) {
         val jobApplication = getItem(position)
@@ -73,10 +61,9 @@ class JobListAdapter(
         notifyItemRemoved(position)
     }
 
-
     // Method to update the job list
-    fun updateJobList(newJobList: List<JobApplication>) {
-        submitList(newJobList) // Use ListAdapter's submitList to handle updates
+    fun updateJobList(newJobList: List<JobApplication>?) {
+        submitList(newJobList ?: emptyList()) // Ensure non-null
     }
 
     // DiffUtil for better performance and item updates

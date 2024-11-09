@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Menu item for the Sort By dropdown -->
+    <!-- A-Z Sorting -->
+    <item
+        android:id="@+id/action_sort_az"
+        android:title="A-Z"
+        android:checkable="true"
+        android:checked="false" /> <!-- Default state: not checked -->
+
+    <!-- Z-A Sorting -->
+    <item
+        android:id="@+id/action_sort_za"
+        android:title="Z-A"
+        android:checkable="true"
+        android:checked="false" /> <!-- Default state: not checked -->
+
+    <!-- Oldest-Newest Sorting -->
+    <item
+        android:id="@+id/action_sort_oldest_newest"
+        android:title="Oldest-Newest"
+        android:checkable="true"
+        android:checked="false" /> <!-- Default state: not checked -->
+
+    <!-- Newest-Oldest Sorting -->
+    <item
+        android:id="@+id/action_sort_newest_oldest"
+        android:title="Newest-Oldest"
+        android:checkable="true"
+        android:checked="false" /> <!-- Default state: not checked -->
+</menu>
