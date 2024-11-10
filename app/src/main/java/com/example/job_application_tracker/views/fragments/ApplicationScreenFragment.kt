@@ -4,11 +4,11 @@ import SwipeToDeleteCallback
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.PopupMenu
 import android.widget.SearchView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -122,7 +122,11 @@ class ApplicationScreenFragment : Fragment() {
         setupSearchView()
 
         applicationScreenBinding.btnSortList.setOnClickListener {
-            showPopupMenu(it)
+            showSortPopupMenu(it)
+        }
+
+        applicationScreenBinding.btnFilterList.setOnClickListener {
+            showFilterPopupMenu(it)
         }
     }
 
@@ -174,7 +178,7 @@ class ApplicationScreenFragment : Fragment() {
         }
     }
 
-    private fun showPopupMenu(view: View) {
+    private fun showSortPopupMenu(view: View) {
         // Create the PopupMenu and associate it with the anchor view (the button clicked)
         popupMenu = PopupMenu(requireContext(), view)
 
@@ -226,13 +230,90 @@ class ApplicationScreenFragment : Fragment() {
         popupMenu.show()
     }
 
-
     private fun applySorting(criteria: String) {
         // Perform sorting logic based on the selected criteria
         mJobApplicationViewModel.sortApplications(criteria).observe(viewLifecycleOwner) { sortedApplications ->
             jobListAdapter.submitList(sortedApplications)
         }
     }
+
+    private fun showFilterPopupMenu(view: View) {
+        popupMenu = PopupMenu(requireContext(), view)
+
+        // Inflate the menu items from the XML file using activity's menuInflater
+        requireActivity().menuInflater.inflate(R.menu.filter_toolbar_menu, popupMenu.menu)
+
+        // Set the checked item manually based on the selectedMenuItemId
+        for (i in 0 until popupMenu.menu.size()) {
+            val item = popupMenu.menu.getItem(i)
+            item.isChecked = item.itemId == selectedMenuItemId
+        }
+
+        popupMenu.setOnMenuItemClickListener { item ->
+            selectedMenuItemId = item.itemId
+
+            // Uncheck all menu items
+            for (i in 0 until popupMenu.menu.size()) {
+                popupMenu.menu.getItem(i).isChecked = false
+            }
+
+            item.isChecked = true
+
+            // Apply filtering based on the selected item
+            when (item.itemId) {
+                R.id.action_filter_applied -> {
+                    applyFilter("Applied")
+                    true
+                }
+                R.id.action_filter_rejected -> {
+                    applyFilter("Rejected")
+                    true
+                }
+                R.id.action_filter_offer -> {
+                    applyFilter("Offer")
+                    true
+                }
+                R.id.action_filter_waiting -> {
+                    applyFilter("Waiting")
+                    true
+                }
+                R.id.action_filter_interview -> {
+                    applyFilter("Interview")
+                    true
+                }
+                R.id.action_filter_none -> {
+                    showAllApplications()
+                    true
+                }
+                else -> false
+            }
+        }
+
+        popupMenu.show()
+    }
+
+    private fun applyFilter(status: String) {
+        // Call the ViewModel's filter function and observe the filtered data
+        mJobApplicationViewModel.filterApplicationsByStatus(status).observe(viewLifecycleOwner) { jobApplications ->
+            jobListAdapter.submitList(jobApplications)  // Update the list in the adapter
+        }
+    }
+
+    private fun showAllApplications() {
+        // This will call the repository method that returns all applications (no filter)
+        mJobApplicationViewModel.sortedJobApplications.observe(viewLifecycleOwner) { jobApplications ->
+            jobListAdapter.submitList(jobApplications)  // Update the list in the adapter
+        }
+    }
+
+
+    fun focusSearchView() {
+        view?.post {
+            searchView.requestFocus() // Focus on the SearchView after the layout is ready
+            Log.d("SearchNav", "Search function Working")
+        }
+    }
+
 
     private fun hideTopBar() {
         topBarLayout.visibility = View.GONE

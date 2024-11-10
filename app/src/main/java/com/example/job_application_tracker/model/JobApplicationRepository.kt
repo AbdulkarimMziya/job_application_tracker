@@ -35,6 +35,11 @@ class JobApplicationRepository(val jobApplicationDao: JobApplicationDao) {
         return jobApplicationDao.searchDatabase(searchQuery)
     }
 
+    // Get applications by status
+    fun getApplicationsByStatus(status: String): LiveData<List<JobApplication>> {
+        return jobApplicationDao.getApplicationsByStatus(status)
+    }
+
     fun sortApplications(criteria: String): LiveData<List<JobApplication>> {
         return when (criteria) {
             "date_asc" -> jobApplicationDao.getApplicationsSortedByDateAsc()

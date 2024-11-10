@@ -59,7 +59,8 @@ class MainActivity : AppCompatActivity(), BottomAppBarVisibility,FragmentNavigat
                     true
                 }
                 R.id.menu_search_applications -> {
-                    Toast.makeText(this, "Search Nav Triggered!", Toast.LENGTH_SHORT).show()
+                    loadFragment(applicationScreenFragment)
+                    applicationScreenFragment.focusSearchView()
                     true
                 }
                 R.id.menu_toHome_applications -> {

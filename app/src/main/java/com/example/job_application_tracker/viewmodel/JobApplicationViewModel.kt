@@ -98,4 +98,9 @@ class JobApplicationViewModel(application: Application) : AndroidViewModel(appli
 
         return sortedJobApplications
     }
+
+    // Filter by status
+    fun filterApplicationsByStatus(status: String): LiveData<List<JobApplication>> {
+        return repository.getApplicationsByStatus(status)
+    }
 }

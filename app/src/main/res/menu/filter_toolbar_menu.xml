@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Menu item for the Filter By dropdown -->
+
+    <!-- Filter by Applied Status -->
+    <item
+        android:id="@+id/action_filter_applied"
+        android:title="Applied"
+        android:checkable="true"
+        android:checked="false" /> <!-- Default state: not checked -->
+
+    <!-- Filter by Rejected Status -->
+    <item
+        android:id="@+id/action_filter_rejected"
+        android:title="Rejected"
+        android:checkable="true"
+        android:checked="false" /> <!-- Default state: not checked -->
+
+    <!-- Filter by Offer Status -->
+    <item
+        android:id="@+id/action_filter_offer"
+        android:title="Offer"
+        android:checkable="true"
+        android:checked="false" /> <!-- Default state: not checked -->
+
+    <!-- Filter by Waiting Status -->
+    <item
+        android:id="@+id/action_filter_waiting"
+        android:title="Waiting"
+        android:checkable="true"
+        android:checked="false" />
+
+    <!-- Filter by Interview Status -->
+    <item
+        android:id="@+id/action_filter_interview"
+        android:title="Interview"
+        android:checkable="true"
+        android:checked="false" /> <!-- Default state: not checked -->
+
+    <item
+        android:id="@+id/action_filter_none"
+        android:title="None"
+        android:checkable="true"
+        android:checked="false" />
+</menu>
