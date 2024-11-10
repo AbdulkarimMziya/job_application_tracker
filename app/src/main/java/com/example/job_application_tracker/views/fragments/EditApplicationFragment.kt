@@ -1,186 +1,237 @@
 package com.example.job_application_tracker.views.fragments
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.Toast
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.example.job_application_tracker.R
 import com.example.job_application_tracker.app_interfaces.BottomAppBarVisibility
-import com.example.job_application_tracker.app_interfaces.FormFragment
+import com.example.job_application_tracker.app_interfaces.FragmentNavigation
 import com.example.job_application_tracker.databinding.FragmentEditApplicationBinding
 import com.example.job_application_tracker.model.JobApplication
 import com.example.job_application_tracker.viewmodel.JobApplicationViewModel
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
-class EditApplicationFragment : Fragment(), FormFragment {
+class EditApplicationFragment : Fragment() {
+
     private lateinit var _binding: FragmentEditApplicationBinding
-    private lateinit var mJobApplicationViewModel: JobApplicationViewModel
-
     private lateinit var jobApplication: JobApplication
-    private val calendar = Calendar.getInstance()
-    private var replyDate: Date = Date()
-    private var interviewDate: Date? = null
+    private val mJobApplicationViewModel: JobApplicationViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         _binding = FragmentEditApplicationBinding.inflate(inflater, container, false)
 
+        // Hide BottomAppBar when entering this fragment
+        (activity as? BottomAppBarVisibility)?.hideBottomAppBar()
 
+        // Retrieve the job application data from the arguments
+        arguments?.let {
+            jobApplication = it.getParcelable("jobApplication") ?: return@let
+            preFillFields(jobApplication)
+        }
+
+        _binding.lblEditInterviewDate.visibility = View.VISIBLE
+
+
+        // Save Button Logic (Save changes to the job application)
+        _binding.btnSave.setOnClickListener {
+            saveJobApplication()
+        }
+
+        _binding.btnDeleteApplication.setOnClickListener {
+            showDeleteConfirmationDialog()
+        }
+
+        // Cancel Button Logic (Navigate back to the previous screen)
+        _binding.btnCancel.setOnClickListener {
+            (activity as? FragmentNavigation)?.loadFragment(ApplicationScreenFragment())
+            (activity as? BottomAppBarVisibility)?.showBottomAppBar()
+        }
+
+        // Date Picker for applied date
+        _binding.btnEditPickDate.setOnClickListener {
+            showDatePicker { selectedDate ->
+                jobApplication = jobApplication.copy(dateApplied = selectedDate.time)
+                updateAppliedDateButton(selectedDate)
+            }
+        }
+
+        // Date Picker for reply date
+        _binding.btnEditReplyDate.setOnClickListener {
+            showDatePicker { selectedDate ->
+                jobApplication = jobApplication.copy(dateLatestReply = selectedDate.time)
+                updateReplyDateButton(selectedDate)
+            }
+        }
+
+        // Date Picker for interview date
+        _binding.btnEditInterviewDate.setOnClickListener {
+            showDatePicker { selectedDate ->
+                jobApplication = jobApplication.copy(interviewDate = selectedDate.time)
+                updateInterviewDateButton(selectedDate)
+            }
+        }
+
+        // Handle the spinner selection for the status
+        _binding.spinnerEditApplicationStatus.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parentView: AdapterView<*>, view: View?, position: Int, id: Long) {
+                val selectedStatus = parentView.getItemAtPosition(position).toString()
+                handleStatusSelection(selectedStatus)
+            }
+
+            override fun onNothingSelected(parentView: AdapterView<*>) {
+                // Do nothing if no item is selected
+            }
+        }
 
         return _binding.root
     }
 
-    private fun init() {
-        // Hide BottomAppBar when entering this fragment
-        (parentFragment as? BottomAppBarVisibility)?.hideBottomAppBar()
+    private fun preFillFields(jobApplication: JobApplication) {
+        _binding.apply {
+            tfEditCompanyName.editText?.setText(jobApplication.companyName)
+            tfEditJobTittle.editText?.setText(jobApplication.jobTitle)
+            tfEditLocation.editText?.setText(jobApplication.location)
+            tfEditLink.editText?.setText(jobApplication.link)
 
-        mJobApplicationViewModel = ViewModelProvider(this).get(JobApplicationViewModel::class.java)
+            val statusAdapter = ArrayAdapter.createFromResource(
+                requireContext(),
+                R.array.application_status,
+                android.R.layout.simple_spinner_item
+            )
+            statusAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinnerEditApplicationStatus.adapter = statusAdapter
 
-        setupStatusSpinner()
-        setupDatePickers()
-        // Initialize buttons with today's date
-        updateDateButton(_binding.btnEditPickDate, calendar.time)
-        updateReplyButton()
-    }
+            val statusPosition = statusAdapter.getPosition(jobApplication.status)
+            spinnerEditApplicationStatus.setSelection(statusPosition)
 
-    private fun setupStatusSpinner() {
-        val spinner = _binding.spinnerEditApplicationStatus
-        ArrayAdapter.createFromResource(
-            requireContext(),
-            R.array.application_status,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
-        }
+            handleStatusSelection(jobApplication.status)
 
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                val selectedStatus = parent.getItemAtPosition(position).toString()
-                handleStatusSelection(selectedStatus)
+            jobApplication.dateApplied?.let {
+                val dateFormat = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
+                btnEditPickDate.text = dateFormat.format(Date(it))
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                // Do nothing
+            jobApplication.dateLatestReply?.let {
+                val dateFormat = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
+                btnEditReplyDate.text = dateFormat.format(Date(it))
+            }
+
+            jobApplication.interviewDate?.let {
+                val dateFormat = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
+                btnEditInterviewDate.text = dateFormat.format(Date(it))
             }
         }
     }
 
     private fun handleStatusSelection(status: String) {
-        if (status == "Interview") {
-            _binding.lblInterviewDate.visibility = View.VISIBLE
-            _binding.btnInterviewDate.isEnabled = true
+        if (status.equals("Interview", ignoreCase = true)) {
+            _binding.lblEditInterviewDate.visibility = View.VISIBLE
+            _binding.btnEditInterviewDate.isEnabled = true  // Enable the interview date button
         } else {
-            _binding.lblInterviewDate.visibility = View.GONE
-            _binding.btnInterviewDate.isEnabled = false
+            _binding.lblEditInterviewDate.visibility = View.GONE
+            _binding.btnEditInterviewDate.isEnabled = false  // Disable the interview date button
         }
     }
 
-    private fun setupDatePickers() {
-        // Set a click listener on the application date button
-        _binding.btnEditPickDate.setOnClickListener {
-            showDatePicker { date ->
-                calendar.time = date
-                updateDateButton(_binding.btnEditPickDate, calendar.time)
-            }
-        }
+    private fun saveJobApplication() {
+        val updatedJobApplication = jobApplication.copy(
+            companyName = _binding.tfEditCompanyName.editText?.text.toString(),
+            jobTitle = _binding.tfEditJobTittle.editText?.text.toString(),
+            location = _binding.tfEditLocation.editText?.text.toString(),
+            status = _binding.spinnerEditApplicationStatus.selectedItem.toString(),
+            interviewDate = jobApplication.interviewDate,  // Save interview date if selected
+            dateLatestReply = jobApplication.dateLatestReply  // Save reply date if selected
+        )
 
-        // Set a click listener on the reply date button
-        _binding.btnEditReplyDate.setOnClickListener {
-            showDatePicker { date ->
-                if (date.before(calendar.time)) {
-                    replyDate = Date()
-                    updateReplyButton()
-                    Toast.makeText(requireContext(), "Reply date cannot be before application date", Toast.LENGTH_SHORT).show()
-                } else {
-                    replyDate = date
-                    updateReplyButton()
-                }
-            }
-        }
+        mJobApplicationViewModel.updateJobApplication(updatedJobApplication)
 
-        // Set a click listener on the interview date button
-        _binding.btnInterviewDate.setOnClickListener {
-            showDatePicker { date ->
-                interviewDate = date
-                updateInterviewButton()
-            }
-        }
+        // Show a Toast message to confirm that the application is updated
+        Toast.makeText(requireContext(), "Job Application Updated", Toast.LENGTH_SHORT).show()
+
+        // Navigate back to the previous screen or fragment
+        (activity as? FragmentNavigation)?.loadFragment(ApplicationScreenFragment())
+        (activity as? BottomAppBarVisibility)?.showBottomAppBar()
     }
 
     private fun showDatePicker(onDateSelected: (Date) -> Unit) {
+        val calendar = Calendar.getInstance()
+        val initialDate = jobApplication.dateApplied?.let {
+            Calendar.getInstance().apply { time = Date(it) }
+        } ?: calendar
+
+        val year = initialDate.get(Calendar.YEAR)
+        val month = initialDate.get(Calendar.MONTH)
+        val dayOfMonth = initialDate.get(Calendar.DAY_OF_MONTH)
+
         val datePickerDialog = DatePickerDialog(
             requireContext(),
-            { _, year, month, dayOfMonth ->
+            { _, selectedYear, selectedMonth, selectedDayOfMonth ->
                 val selectedDate = Calendar.getInstance().apply {
-                    set(year, month, dayOfMonth)
+                    set(selectedYear, selectedMonth, selectedDayOfMonth)
                 }.time
+
                 onDateSelected(selectedDate)
             },
-            calendar.get(Calendar.YEAR),
-            calendar.get(Calendar.MONTH),
-            calendar.get(Calendar.DAY_OF_MONTH)
+            year, month, dayOfMonth
         )
+
+        // Show the date picker dialog
         datePickerDialog.show()
     }
 
-    private fun updateDateButton(button: Button, date: Date) {
+    private fun updateAppliedDateButton(selectedDate: Date) {
         val dateFormat = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
-        button.text = dateFormat.format(date)  // Update button text with the selected date
+        _binding.btnEditPickDate.text = dateFormat.format(selectedDate)
     }
 
-    private fun updateReplyButton() {
-        updateDateButton(_binding.btnEditReplyDate, replyDate)
+    private fun updateInterviewDateButton(selectedDate: Date) {
+        val dateFormat = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
+        _binding.btnEditInterviewDate.text = dateFormat.format(selectedDate)
     }
 
-    private fun updateInterviewButton() {
-        updateDateButton(_binding.btnInterviewDate, interviewDate ?: Date())
+    private fun updateReplyDateButton(selectedDate: Date) {
+        val dateFormat = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
+        _binding.btnEditReplyDate.text = dateFormat.format(selectedDate)
     }
 
-    private fun insertDataToDatabase() {
-        val companyName = _binding.tfEditCompanyName.editText?.text.toString()
-        val jobTitle = _binding.tfEditJobTittle.editText?.text.toString()
-        val location = _binding.tfEditLocation.editText?.text.toString()
-        val status = _binding.spinnerEditApplicationStatus.selectedItem.toString()
-        val link = _binding.tfEditLink.editText?.text.toString()
-        val dateApplied = calendar.timeInMillis
-        val replyDateString = replyDate.time
-        val interviewDateString = interviewDate?.time ?: 0L
+    private fun showDeleteConfirmationDialog() {
+        // This will show a simple confirmation dialog
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setMessage("Are you sure you want to delete this job application?")
+            .setCancelable(false)
+            .setPositiveButton("Yes") { _, _ ->
+                deleteJobApplication()
+            }
+            .setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()  // Dismiss the dialog
+            }
 
-        // Create JobApplication instance
-        val jobApplication = JobApplication(
-            id = 0,  // Assuming id is auto-generated
-            companyName = companyName,
-            jobTitle = jobTitle,
-            location = location,
-            link = link,
-            status = status,
-            dateApplied = dateApplied,
-            dateLatestReply = replyDateString,
-            interviewDate = interviewDateString
-        )
-
-        // Save to ViewModel
-        mJobApplicationViewModel.addJobApplication(jobApplication)
-        Toast.makeText(requireContext(), "Application saved successfully!", Toast.LENGTH_SHORT).show()
+        builder.create().show()
     }
 
-    override fun isFormFragment(): Boolean {
-        return true
+    private fun deleteJobApplication() {
+        // Call the delete method in the ViewModel
+        mJobApplicationViewModel.delete(jobApplication)
+        Toast.makeText(requireContext(), "Job Application Deleted", Toast.LENGTH_SHORT).show()
+
+        // Navigate back to the previous screen after deletion
+        (activity as? FragmentNavigation)?.loadFragment(ApplicationScreenFragment())
+        (activity as? BottomAppBarVisibility)?.showBottomAppBar()
     }
-
-
-
-
 }
+

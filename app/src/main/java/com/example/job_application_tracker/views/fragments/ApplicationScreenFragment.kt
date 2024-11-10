@@ -1,6 +1,7 @@
 package com.example.job_application_tracker.views.fragments
 
 import SwipeToDeleteCallback
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.*
@@ -33,6 +34,18 @@ class ApplicationScreenFragment : Fragment() {
     private lateinit var popupMenu: PopupMenu
     private var selectedMenuItemId: Int = R.id.action_sort_newest_oldest  // Default to a selected item
 
+    private lateinit var mFragmentNavigation: FragmentNavigation
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        // Ensure that the parent activity implements FragmentNavigation
+        if (context is FragmentNavigation) {
+            mFragmentNavigation = context
+        } else {
+            throw ClassCastException("$context must implement FragmentNavigation")
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,8 +69,19 @@ class ApplicationScreenFragment : Fragment() {
         // Initialize the RecyclerView and Adapter
         jobListAdapter = JobListAdapter(
             onItemClick = { jobApplication ->
-                // Add your onClick action here
-                Toast.makeText(requireContext(), "Clicked on: ${jobApplication.companyName} - ${jobApplication.jobTitle}", Toast.LENGTH_SHORT).show()
+
+                // Handle item click: Navigate to EditApplicationFragment
+                val editApplicationFragment = EditApplicationFragment()
+
+                // Create a Bundle to pass the JobApplication data
+                val bundle = Bundle().apply {
+                    putParcelable("jobApplication", jobApplication)
+                }
+
+                editApplicationFragment.arguments = bundle
+
+                // Use the loadFragment method to load the EditApplicationFragment
+                mFragmentNavigation.loadFragment(editApplicationFragment)
             },
             deleteJobApplication = { jobApplication ->
                 mJobApplicationViewModel.delete(jobApplication)

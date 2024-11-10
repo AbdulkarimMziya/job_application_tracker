@@ -146,7 +146,7 @@
 
                 <!-- Interview Date Section (hidden by default) -->
                 <RelativeLayout
-                    android:id="@+id/lblInterviewDate"
+                    android:id="@+id/lblEditInterviewDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="gone"
@@ -160,7 +160,7 @@
                         android:textStyle="bold" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnInterviewDate"
+                        android:id="@+id/btnEditInterviewDate"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:background="@drawable/round_back_white_secondary_20"
