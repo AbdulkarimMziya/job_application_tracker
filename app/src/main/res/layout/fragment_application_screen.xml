@@ -12,39 +12,40 @@
         android:id="@+id/topBarLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="end"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
+        android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:padding="8dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <RelativeLayout
             android:id="@+id/topBarMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Applications"
                 android:layout_centerInParent="true"
+                android:text="Applications"
                 android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/btnFilterList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_filter_list"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/btnSortList"
-                app:tint="@android:color/holo_blue_dark" />
+                android:background="@drawable/toolbar_btn_selector"
+                android:src="@drawable/ic_filter_list"
+                app:tint="@android:color/holo_blue_light" />
 
             <ImageView
                 android:id="@+id/btnSortList"
@@ -53,7 +54,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginHorizontal="20dp"
                 android:src="@drawable/ic_sort_24"
-                app:tint="@android:color/holo_blue_dark" />
+                app:tint="@android:color/holo_blue_light" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -64,8 +65,8 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
-        android:orientation="horizontal"
         android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topBarLayout">
@@ -86,11 +87,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_weight=".1"
             android:text="Cancel"
             android:textAlignment="center"
-            android:visibility="gone"
-            android:layout_weight=".1"/>
+            android:visibility="gone" />
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bannerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/notes_svgrepo_com" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add your first job application."
+            android:textSize="18sp"/>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_stat_minus_2"
+            android:scaleType="fitCenter"/>
+    </LinearLayout>
+
 
     <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView

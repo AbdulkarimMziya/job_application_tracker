@@ -200,7 +200,7 @@
                         android:id="@+id/tfEditCompanyName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:endIconDrawable="@drawable/ic_arrow_north_east"
+                        app:endIconDrawable="@drawable/ic_close_symbol"
                         app:endIconTint="@color/white"
                         app:endIconMode="clear_text"
                         android:hint="Company name">
@@ -217,16 +217,16 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:endIconDrawable="@drawable/ic_arrow_north_east"
-                    app:endIconTint="@color/white"
-                    app:endIconMode="clear_text"
                     android:layout_marginTop="10dp">
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/tfEditJobTittle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Job title">
+                        android:hint="Job title"
+                        app:endIconDrawable="@drawable/ic_close_symbol"
+                        app:endIconTint="@color/white"
+                        app:endIconMode="clear_text">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
@@ -245,7 +245,7 @@
                         android:id="@+id/tfEditLocation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:endIconDrawable="@drawable/ic_arrow_north_east"
+                        app:endIconDrawable="@drawable/ic_close_symbol"
                         app:endIconTint="@color/white"
                         app:endIconMode="clear_text"
                         android:hint="Location">
@@ -267,7 +267,7 @@
                         android:id="@+id/tfEditLink"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:endIconDrawable="@drawable/ic_arrow_north_east"
+                        app:endIconDrawable="@drawable/ic_close_symbol"
                         app:endIconTint="@color/white"
                         android:hint="Link"
                         app:endIconMode="clear_text">

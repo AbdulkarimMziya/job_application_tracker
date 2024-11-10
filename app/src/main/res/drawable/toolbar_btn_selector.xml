@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Default state: apply holo_blue_light when the button is not pressed or selected -->
+    <item android:drawable="@drawable/round_back_white_secondary_10" android:state_enabled="false" />
+
+    <!-- When the button is pressed, apply a light background -->
+    <item android:drawable="@drawable/round_back_white_secondary_10" android:state_pressed="true"/>
+
+    <!-- When the button is focused, apply a special focused background -->
+    <item android:drawable="@drawable/round_back_white_secondary_10" android:state_focused="true"/>
+
+    <!-- When the button is clicked (selected), change the background to dark blue -->
+    <item android:drawable="@drawable/round_back_white_secondary_10" android:state_selected="true"/>
+  
+</selector>

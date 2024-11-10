@@ -6,11 +6,15 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.PopupMenu
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,10 +35,16 @@ class ApplicationScreenFragment : Fragment() {
     private lateinit var jobListAdapter: JobListAdapter
     private lateinit var mJobApplicationViewModel: JobApplicationViewModel
 
+    private lateinit var bannerLayout: LinearLayout
+
     private lateinit var popupMenu: PopupMenu
     private var selectedMenuItemId: Int = R.id.action_sort_newest_oldest  // Default to a selected item
 
     private lateinit var mFragmentNavigation: FragmentNavigation
+
+    private lateinit var btnSortList: ImageView
+    private lateinit var btnFilterList: ImageView
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -53,6 +63,8 @@ class ApplicationScreenFragment : Fragment() {
         // Inflate the layout for this fragment
         applicationScreenBinding = FragmentApplicationScreenBinding.inflate(layoutInflater, container, false)
 
+
+
         init()
 
         return applicationScreenBinding.root
@@ -62,6 +74,9 @@ class ApplicationScreenFragment : Fragment() {
         topBarLayout = applicationScreenBinding.topBarLayout
         searchView = applicationScreenBinding.searchView
         recyclerView = applicationScreenBinding.recyclerView
+        bannerLayout = applicationScreenBinding.bannerLayout
+
+
 
         // Initialize the ViewModel
         mJobApplicationViewModel = ViewModelProvider(this).get(JobApplicationViewModel::class.java)
@@ -105,7 +120,17 @@ class ApplicationScreenFragment : Fragment() {
 
         // Observe the job applications LiveData
         mJobApplicationViewModel.sortedJobApplications.observe(viewLifecycleOwner) { jobApplications ->
-            jobListAdapter.submitList(jobApplications)
+            // Toggle visibility based on job application count
+            if (jobApplications.isEmpty()) {
+                // No applications, show banner and hide RecyclerView
+                recyclerView.visibility = View.GONE
+                bannerLayout.visibility = View.VISIBLE
+            } else {
+                // Applications exist, show RecyclerView and hide banner
+                bannerLayout.visibility = View.GONE
+                recyclerView.visibility = View.VISIBLE
+                jobListAdapter.submitList(jobApplications)
+            }
         }
 
         // Observe application count
@@ -121,11 +146,18 @@ class ApplicationScreenFragment : Fragment() {
         // Set up the SearchView listener
         setupSearchView()
 
-        applicationScreenBinding.btnSortList.setOnClickListener {
+        // Initialize the button
+        btnSortList = applicationScreenBinding.btnSortList
+
+        // Set the click listener for the button
+        btnSortList.setOnClickListener {
+            // Call your sort popup menu logic
             showSortPopupMenu(it)
         }
 
-        applicationScreenBinding.btnFilterList.setOnClickListener {
+        btnFilterList = applicationScreenBinding.btnFilterList
+
+        btnFilterList.setOnClickListener {
             showFilterPopupMenu(it)
         }
     }
