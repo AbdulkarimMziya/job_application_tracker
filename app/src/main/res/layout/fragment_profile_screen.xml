@@ -19,7 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Profile Settings"
+            android:text="Settings"
             android:layout_centerInParent="true"
             android:textColor="@color/white"
             android:textStyle="bold"
@@ -41,7 +41,8 @@
                 android:layout_height="wrap_content"
                 android:text="DISPLAY"
                 android:layout_marginTop="40dp"
-                android:layout_marginStart="28dp"/>
+                android:layout_marginStart="28dp"
+                android:visibility="gone"/>
             <LinearLayout
                 android:background="@drawable/round_back_white_20"
                 android:layout_width="match_parent"
@@ -50,7 +51,8 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginTop="5dp"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="16dp"
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -91,6 +93,7 @@
                 android:layout_height="wrap_content"
                 android:text="LANGUAGE PREFERENCE"
                 android:layout_marginTop="40dp"
+                android:visibility="gone"
                 android:layout_marginStart="28dp"/>
             <LinearLayout
                 android:background="@drawable/round_back_white_20"
@@ -100,7 +103,8 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginTop="5dp"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="16dp"
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -252,6 +256,19 @@
                         android:layout_alignParentEnd="true" />
                 </RelativeLayout>
             </LinearLayout>
+
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Any comments or feedback is helpful, so please feel free to share ;)"
+                android:textAlignment="center"
+                android:lineSpacingExtra="4dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="start|top"
+                android:maxLines="2"
+                android:ellipsize="end"/>
 
 
         </LinearLayout>

@@ -43,7 +43,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/btnSortList"
-                android:background="@drawable/toolbar_btn_selector"
                 android:src="@drawable/ic_filter_list"
                 app:tint="@android:color/holo_blue_light" />
 
