@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
+import com.example.job_application_tracker.R
 import com.example.job_application_tracker.app_interfaces.BottomAppBarVisibility
 import com.example.job_application_tracker.databinding.FragmentHomeScreenBinding
 import com.example.job_application_tracker.viewmodel.JobApplicationViewModel
@@ -82,24 +84,30 @@ class HomeScreenFragment : Fragment() {
     }
 
     private fun displayBoard() {
+
+        val bounceAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.bounce)
         // Observe application count
         mJobApplicationViewModel.applicationCount.observe(viewLifecycleOwner) { count ->
             tvTotalApplications.text = "$count"
+            tvTotalApplications.startAnimation(bounceAnimation)
         }
 
         // Observe rejected application count
         mJobApplicationViewModel.getCountOfRejectedApplications().observe(viewLifecycleOwner) { count ->
             tvRejectedApplications.text = "$count"
+            tvRejectedApplications.startAnimation(bounceAnimation)
         }
 
         // Observe interview count
         mJobApplicationViewModel.getCountOfInterviews().observe(viewLifecycleOwner) { count ->
             tvTotalInterviews.text = "$count"
+            tvTotalInterviews.startAnimation(bounceAnimation)
         }
 
         // Observe offers count
         mJobApplicationViewModel.getCountOfOffers().observe(viewLifecycleOwner) { count ->
             tvTotalOffers.text = "$count"
+            tvTotalOffers.startAnimation(bounceAnimation)
         }
     }
 }
