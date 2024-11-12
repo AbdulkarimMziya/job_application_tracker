@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -75,16 +76,20 @@ class AddApplicationFragment : Fragment(), FormFragment {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
         }
+        val scaleUpAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.scale_up)
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val selectedStatus = parent.getItemAtPosition(position).toString()
                 handleStatusSelection(selectedStatus)
+
+                spinner.startAnimation(scaleUpAnimation)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
                 // Do nothing
             }
+
         }
     }
 
