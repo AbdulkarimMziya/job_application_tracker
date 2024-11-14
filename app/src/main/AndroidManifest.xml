@@ -13,9 +13,12 @@
         android:theme="@style/Theme.Job_application_tracker"
         tools:targetApi="31">
         <activity
+            android:name=".AuthenticationActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.MainActivity"
-            android:exported="true"
             android:configChanges="orientation"
+            android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
