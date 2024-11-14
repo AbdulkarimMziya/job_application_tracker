@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Toast
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.job_application_tracker.R
@@ -67,7 +69,18 @@ class MainActivity : AppCompatActivity(), BottomAppBarVisibility,FragmentNavigat
                     true
                 }
                 R.id.menu_toHome_applications -> {
-                    loadFragment(applicationScreenFragment) // Navigate to applications fragment
+                    val fab = findViewById(R.id.fab)
+
+// Load the shake animation
+                    val shakeAnim = AnimationUtils.loadAnimation(this, R.anim.shake)
+
+// Apply shake animation to the FloatingActionButton
+                    fab.startAnimation(shakeAnim)
+
+// Delay fragment navigation until after animation completes (e.g., after 500ms)
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        loadFragment(applicationScreenFragment) // Navigate to applications fragment
+                    }, shakeAnim.duration)// Navigate to applications fragment
                     true
                 }
                 R.id.menu_toHome_profile -> {
