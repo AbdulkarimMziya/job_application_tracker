@@ -1,15 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="15dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg"
     tools:context=".AuthenticateMainFragment">
 
    <TextView
+       android:padding="10dp"
+       android:background="@drawable/border"
+       android:id="@+id/tvWelcome"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:layout_centerInParent="true"
-       android:text="Authentication Main"
-       android:textSize="28dp"/>
-    
-</RelativeLayout>
+       android:layout_marginTop="32dp"
+       android:text="HIRE HORIZON"
+       android:textColor="@android:color/black"
+       android:textSize="30sp"
+       android:textStyle="bold"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent" />
+
+   <ImageView
+       android:id="@+id/imgLogo"
+       android:layout_width="250dp"
+       android:layout_height="200dp"
+       android:layout_marginBottom="328dp"
+       android:src="@drawable/baseline_shopping_bag_24"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.497"
+       app:layout_constraintStart_toStartOf="parent" />
+
+   <Button
+       android:backgroundTint="@color/maroon"
+       android:textColor="@color/cream"
+       android:textSize="20sp"
+       android:id="@+id/btnSignIn"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="108dp"
+       android:text="SIGN IN"
+       app:layout_constraintEnd_toStartOf="@+id/btnSignUp"
+       app:layout_constraintHorizontal_chainStyle="spread"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@id/imgLogo" />
+
+   <Button
+       android:backgroundTint="@color/maroon"
+       android:textColor="@color/cream"
+       android:id="@+id/btnSignUp"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="108dp"
+       android:text="SIGN UP"
+       android:textSize="20sp"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toEndOf="@id/btnSignIn"
+       app:layout_constraintTop_toBottomOf="@id/imgLogo" />
+
+   <Button
+       android:backgroundTint="@color/maroon"
+       android:textColor="@color/cream"
+       android:id="@+id/btnGoogleLogin"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="GOOGLE"
+       android:textSize="20sp"
+       app:layout_constraintTop_toBottomOf="@id/btnSignIn"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintStart_toStartOf="@id/btnSignIn"
+       app:layout_constraintEnd_toEndOf="@id/btnSignUp"
+       app:layout_constraintHorizontal_bias="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

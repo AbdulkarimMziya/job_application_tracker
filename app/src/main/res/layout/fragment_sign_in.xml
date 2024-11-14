@@ -1,14 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="15dp"
+    android:background="@drawable/bg"
     tools:context=".SignInFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:textColorHint="@color/black"
+        android:id="@+id/etEmail"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="255dp"
+        android:hint="Enter Email"
+        android:background="@drawable/edit_text_background"
+        android:padding="15dp"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        android:elevation="5dp"
+        android:drawablePadding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.0">
 
-</FrameLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:backgroundTint="@color/white"
+            android:inputType="textEmailAddress"
+            android:layout_height="match_parent"
+            android:drawablePadding="10dp"
+            android:ems="15"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        app:passwordToggleEnabled="false"
+        android:textColorHint="@color/black"
+        android:id="@+id/etPassword"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="15dp"
+        android:hint="Enter Password"
+        android:inputType="textPassword"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/black"
+        android:background="@drawable/edit_text_background"
+        android:padding="15dp"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        android:elevation="5dp"
+        android:drawablePadding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etEmail"
+        app:layout_constraintHorizontal_bias="0.0">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:inputType="textPassword"
+            android:drawablePadding="10dp"
+            android:ems="15"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:backgroundTint="@color/maroon"
+        android:textColor="@color/cream"
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="SIGN IN"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:elevation="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etPassword" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
