@@ -69,20 +69,19 @@ class MainActivity : AppCompatActivity(), BottomAppBarVisibility,FragmentNavigat
                     true
                 }
                 R.id.menu_toHome_applications -> {
-                    val fab = findViewById(R.id.fab)
-
-// Load the shake animation
+                    // Load the shake animation
                     val shakeAnim = AnimationUtils.loadAnimation(this, R.anim.shake)
 
-// Apply shake animation to the FloatingActionButton
-                    fab.startAnimation(shakeAnim)
+                    // Apply shake animation to the FloatingActionButton
+                    binding.fab.startAnimation(shakeAnim)
 
-// Delay fragment navigation until after animation completes (e.g., after 500ms)
+                    // Delay fragment navigation until after animation completes (e.g., after 500ms)
                     Handler(Looper.getMainLooper()).postDelayed({
                         loadFragment(applicationScreenFragment) // Navigate to applications fragment
-                    }, shakeAnim.duration)// Navigate to applications fragment
+                    }, shakeAnim.duration)
                     true
                 }
+
                 R.id.menu_toHome_profile -> {
                     loadFragment(profileScreenFragment) // Navigate to profile fragment
                     true
