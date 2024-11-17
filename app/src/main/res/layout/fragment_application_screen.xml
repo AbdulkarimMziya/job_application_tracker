@@ -79,10 +79,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@drawable/border"
+            android:background="@drawable/border1"
             android:iconifiedByDefault="false"
             android:queryBackground="@android:color/transparent"
-            android:queryHint="Search Company..." />
+            android:queryHint="Search Company..."
+            app:theme="@style/CustomSearchView"/>
 
         <TextView
             android:id="@+id/btnCancelSearch"

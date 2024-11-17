@@ -47,7 +47,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginStart="28dp"/>
             <LinearLayout
-                android:background="@drawable/round_back_white_20"
+                android:background="@drawable/border2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -102,7 +102,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginStart="28dp"/>
             <LinearLayout
-                android:background="@drawable/round_back_white_20"
+                android:background="@drawable/border2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -136,7 +136,7 @@
                         android:layout_toEndOf="@id/ivLanguage"/>
 
                     <ImageView
-                        app:thumbTint="@color/maroon"
+                        app:tint="@color/maroon"
                         android:id="@+id/btnLanguage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -156,7 +156,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginStart="28dp"/>
             <LinearLayout
-                android:background="@drawable/round_back_white_20"
+                android:background="@drawable/border2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"

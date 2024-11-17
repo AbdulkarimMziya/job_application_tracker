@@ -32,12 +32,14 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:layout_margin="20dp"
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="20dp"
         android:weightSum="2"
+        android:background="@drawable/border2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
@@ -73,11 +75,12 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:fontFamily="@font/font"
                     android:id="@+id/tvTotalApplications"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="35sp"
                     android:textStyle="bold" />
 
@@ -106,11 +109,12 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:fontFamily="@font/font"
                     android:id="@+id/tvRejectedApplications"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="35sp"
                     android:textStyle="bold" />
 
@@ -149,11 +153,12 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:fontFamily="@font/font"
                     android:id="@+id/tvTotalInterviews"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="35sp"
                     android:textStyle="bold" />
 
@@ -182,11 +187,12 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:fontFamily="@font/font"
                     android:id="@+id/tvTotalOffers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="35sp"
                     android:textStyle="bold" />
             </RelativeLayout>
