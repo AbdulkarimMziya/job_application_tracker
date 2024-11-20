@@ -1,6 +1,7 @@
 package com.example.job_application_tracker.views.fragments
 
 import SwipeToDeleteCallback
+import android.view.animation.AnimationUtils
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -148,6 +149,11 @@ class ApplicationScreenFragment : Fragment() {
 
     private fun setupSortButtons() {
         applicationScreenBinding.btnSortList.setOnClickListener {
+            // Load the scale animation
+            val scaleAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.scale_up) 
+            // Start the animation
+            it.startAnimation(scaleAnimation)
+
             // Show sorting options dialog
             val sortingOptions = arrayOf("Date: Newest First", "Date: Oldest First", "Name: A-Z", "Name: Z-A")
             AlertDialog.Builder(requireContext())
@@ -168,6 +174,7 @@ class ApplicationScreenFragment : Fragment() {
                 .show()
         }
     }
+
 
     private fun hideTopBar() {
         topBarLayout.visibility = View.GONE
