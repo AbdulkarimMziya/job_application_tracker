@@ -6,13 +6,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg"
     android:padding="15dp"
-    tools:context=".SignupFragment">
+    tools:context=".views.fragments.SignupFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:textSize="15sp"
         android:id="@+id/etEmail"
         android:layout_width="0dp"
-        android:layout_height="75dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="190dp"
         android:background="@drawable/edit_text_background"
         android:drawablePadding="10dp"
@@ -28,23 +28,23 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@android:color/transparent"
+            android:textColor="@color/black"
             android:drawablePadding="10dp"
             android:ems="15"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:background="@drawable/edit_text_background"
         android:textSize="15sp"
         android:textColorHint="@color/black"
         app:passwordToggleEnabled="false"
         android:layout_marginTop="15dp"
-        android:elevation="5dp"
         android:padding="15dp"
-        android:background="@drawable/edit_text_background"
         android:id="@+id/etPassword"
         android:layout_width="0dp"
-        android:layout_height="75dp"
+        android:layout_height="wrap_content"
         android:hint="Enter Password"
         android:inputType="textPassword"
         app:endIconMode="password_toggle"
@@ -56,6 +56,8 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:drawablePadding="10dp"
+            android:backgroundTint="@android:color/transparent"
+            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textPassword"
@@ -72,18 +74,21 @@
         android:background="@drawable/edit_text_background"
         android:id="@+id/etConfirmPassword"
         android:layout_width="0dp"
-        android:layout_height="75dp"
+        android:layout_height="wrap_content"
         android:hint="Confirm Password"
         android:inputType="textPassword"
         app:endIconMode="password_toggle"
+        app:endIconTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPassword">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:background="@android:color/transparent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:textColor="@color/black"
             android:inputType="textPassword"
             android:drawablePadding="10dp"
             android:ems="15"/>

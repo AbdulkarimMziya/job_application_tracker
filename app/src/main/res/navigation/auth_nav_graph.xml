@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/authenticateMainFragment"
-        android:name="com.example.job_application_tracker.AuthenticateMainFragment"
+        android:name="com.example.job_application_tracker.views.fragments.AuthenticateMainFragment"
         android:label="fragment_authenticate_main"
         tools:layout="@layout/fragment_authenticate_main" >
         <action
@@ -16,15 +16,43 @@
         <action
             android:id="@+id/action_authenticateMainFragment_to_signupFragment"
             app:destination="@id/signupFragment" />
+        <action
+            android:id="@+id/action_authenticateMainFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.example.job_application_tracker.SignInFragment"
+        android:name="com.example.job_application_tracker.views.fragments.SignInFragment"
         android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_in" />
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signInFragment_to_signupFragment"
+            app:destination="@id/signupFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
+    </fragment>
     <fragment
         android:id="@+id/signupFragment"
-        android:name="com.example.job_application_tracker.SignupFragment"
+        android:name="com.example.job_application_tracker.views.fragments.SignupFragment"
         android:label="fragment_signup"
-        tools:layout="@layout/fragment_signup" />
+        tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/action_signupFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.job_application_tracker.views.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/profileScreenFragment2"
+        android:name="com.example.job_application_tracker.views.fragments.ProfileScreenFragment"
+        android:label="fragment_profile_screen"
+        tools:layout="@layout/fragment_profile_screen" >
+        <action
+            android:id="@+id/action_profileScreenFragment2_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
 </navigation>

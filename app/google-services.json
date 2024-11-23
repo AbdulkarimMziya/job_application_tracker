@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "456072927530",
+    "project_id": "hire-horizon-a70f8",
+    "storage_bucket": "hire-horizon-a70f8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456072927530:android:b3e9f74b925adadf65e653",
+        "android_client_info": {
+          "package_name": "com.example.job_application_tracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnT01G5XD6Bs7E2ecL_wWGN2j4k3lHB8k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -35,6 +35,48 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <!-- User Login Info -->
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_menu_person"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/tvUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="Username"
+                android:textColor="@color/white"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="user@email.com"
+                android:textColor="#CCFFFFFF"
+                android:textSize="12sp"
+                android:layout_gravity="center"  />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSignOut"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:paddingStart="20dp"
+                android:layout_gravity="center"
+                android:text="Sign out"
+                android:textColor="@android:color/holo_red_light"
+                android:paddingEnd="20dp"
+                android:onClick="signoutUser"/>
+
+
             <!-- Night Mode -->
             <TextView
                 android:layout_width="wrap_content"
