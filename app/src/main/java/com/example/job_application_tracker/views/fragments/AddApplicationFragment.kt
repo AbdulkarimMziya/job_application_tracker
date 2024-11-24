@@ -104,16 +104,20 @@ class AddApplicationFragment : Fragment(), FormFragment {
     }
 
     private fun setupDatePickers() {
+        val scaleUpAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.shake)
         // Set a click listener on the application date button
         addApplicationBinding.btnPickDate.setOnClickListener {
+            it.startAnimation(scaleUpAnimation)
             showDatePicker { date ->
                 calendar.time = date
                 updateDateButton(addApplicationBinding.btnPickDate, calendar.time)
             }
         }
 
+
         // Set a click listener on the reply date button
         addApplicationBinding.btnReplyDate.setOnClickListener {
+            it.startAnimation(scaleUpAnimation)
             showDatePicker { date ->
                 if (date.before(calendar.time)) {
                     replyDate = Date()
@@ -128,12 +132,15 @@ class AddApplicationFragment : Fragment(), FormFragment {
 
         // Set a click listener on the interview date button
         addApplicationBinding.btnInterviewDate.setOnClickListener {
+            it.startAnimation(scaleUpAnimation)
             showDatePicker { date ->
                 interviewDate = date
                 updateInterviewButton()
             }
         }
     }
+
+
 
     private fun showDatePicker(onDateSelected: (Date) -> Unit) {
         val datePickerDialog = DatePickerDialog(
