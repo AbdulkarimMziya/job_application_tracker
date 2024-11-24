@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -76,10 +77,12 @@ class AddApplicationFragment : Fragment(), FormFragment {
             spinner.adapter = adapter
         }
 
+        val scaleUpAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.scale_up)
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val selectedStatus = parent.getItemAtPosition(position).toString()
                 handleStatusSelection(selectedStatus)
+                spinner.startAnimation(scaleUpAnimation)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -99,8 +102,10 @@ class AddApplicationFragment : Fragment(), FormFragment {
     }
 
     private fun setupDatePickers() {
+        val scaleUpAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.shake)
         // Set a click listener on the application date button
         addApplicationBinding.btnPickDate.setOnClickListener {
+            it.startAnimation(scaleUpAnimation)
             showDatePicker { date ->
                 calendar.time = date
                 updateDateButton(addApplicationBinding.btnPickDate, calendar.time)
@@ -109,6 +114,7 @@ class AddApplicationFragment : Fragment(), FormFragment {
 
         // Set a click listener on the reply date button
         addApplicationBinding.btnReplyDate.setOnClickListener {
+            it.startAnimation(scaleUpAnimation)
             showDatePicker { date ->
                 if (date.before(calendar.time)) {
                     replyDate = Date()
@@ -123,6 +129,7 @@ class AddApplicationFragment : Fragment(), FormFragment {
 
         // Set a click listener on the interview date button
         addApplicationBinding.btnInterviewDate.setOnClickListener {
+            it.startAnimation(scaleUpAnimation)
             showDatePicker { date ->
                 interviewDate = date
                 updateInterviewButton()

@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -151,6 +152,10 @@ class ApplicationScreenFragment : Fragment() {
 
         // Set the click listener for the button
         btnSortList.setOnClickListener {
+            val scaleAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.scale_up)
+            // Start the animation
+            it.startAnimation(scaleAnimation)
+
             // Call your sort popup menu logic
             showSortPopupMenu(it)
         }
@@ -158,6 +163,10 @@ class ApplicationScreenFragment : Fragment() {
         btnFilterList = applicationScreenBinding.btnFilterList
 
         btnFilterList.setOnClickListener {
+            val scaleAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.scale_up)
+            // Start the animation
+            it.startAnimation(scaleAnimation)
+
             showFilterPopupMenu(it)
         }
     }

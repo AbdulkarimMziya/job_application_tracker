@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.navigation.fragment.findNavController
 import com.example.job_application_tracker.app_interfaces.BottomAppBarVisibility
 import com.example.job_application_tracker.R
@@ -38,11 +39,14 @@ class ProfileScreenFragment : Fragment() {
             signOutUser()
         }
 
+        applyScaleUpAnimation(profileScreenBinding.ivFollowMe)
         // Open Abdul's link
         profileScreenBinding.btnOpenAbdulLink.setOnClickListener {
-            openUrl("https://abdulmziya.netlify.app")
+            openUrl("https://www.abdulmziya.netlify.app")
         }
 
+
+        applyScaleUpAnimation(profileScreenBinding.ivFollowMe1)
         // Open Gabriel's link
         profileScreenBinding.btnOpenGabrielLink.setOnClickListener {
             openUrl("https://www.linkedin.com/in/gabriel-eremie-0ab159250/")
@@ -57,6 +61,12 @@ class ProfileScreenFragment : Fragment() {
             profileScreenBinding.tvEmail.text = user.email
             profileScreenBinding.tvUsername.text = user.email
         }
+    }
+
+    // Function to apply the scale-up animation from XML
+    private fun applyScaleUpAnimation(imageView: View) {
+        val scaleUp = AnimationUtils.loadAnimation(context, R.anim.scale_up)
+        imageView.startAnimation(scaleUp)
     }
 
     private fun openUrl(url: String) {
