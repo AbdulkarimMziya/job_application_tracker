@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
 import com.example.job_application_tracker.R
 import com.example.job_application_tracker.app_interfaces.BottomAppBarVisibility
@@ -48,6 +49,7 @@ class MainActivity : AppCompatActivity(), BottomAppBarVisibility, FragmentNaviga
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
