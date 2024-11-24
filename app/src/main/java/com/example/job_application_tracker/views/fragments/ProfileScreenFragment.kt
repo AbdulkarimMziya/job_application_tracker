@@ -42,7 +42,7 @@ class ProfileScreenFragment : Fragment() {
         applyScaleUpAnimation(profileScreenBinding.ivFollowMe)
         // Open Abdul's link
         profileScreenBinding.btnOpenAbdulLink.setOnClickListener {
-            openUrl("https://www.abdulmziya.netlify.app")
+            openUrl("https://abdulmziya.netlify.app")
         }
 
 
