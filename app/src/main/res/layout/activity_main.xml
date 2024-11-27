@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@drawable/bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.MainActivity">
@@ -23,21 +24,25 @@
         android:id="@+id/coordinatorLayout"
         android:layout_width="match_parent"
         android:layout_height="90dp"
-        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
+            android:layout_gravity="bottom"
+            android:backgroundTint="@color/maroon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:fabCradleMargin="16dp"
-            app:fabCradleRoundedCornerRadius="16dp">
+            app:fabCradleRoundedCornerRadius="15dp"
+            app:fabCradleMargin="15dp">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
+                app:itemPaddingTop="13dp"
+                app:itemIconSize="25dp"
                 android:id="@+id/bottom_navigation"
+                app:itemTextColor="@color/cream"
+                app:itemIconTint="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="16dp"
@@ -50,7 +55,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_add"
-            app:layout_anchor="@id/bottom_navigation" />
+            app:layout_anchor="@id/bottom_navigation"
+            app:backgroundTint="@color/maroon"
+            android:contentDescription="Add"
+
+            android:elevation="10dp"
+
+            app:rippleColor="@color/black"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
     

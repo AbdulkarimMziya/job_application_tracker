@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@drawable/bg"
     tools:context=".views.fragments.AddApplicationFragment">
 
     <!-- Top App Bar -->
@@ -24,19 +25,22 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
-            android:textColor="@android:color/holo_red_light"
-            android:textSize="20sp"/>
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/font"
+            android:textSize="15sp"/>
 
         <TextView
+            android:fontFamily="@font/font"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Job Application"
             android:layout_centerInParent="true"
-            android:textColor="@color/white"
+            android:textColor="@color/maroon"
             android:textStyle="bold"
             android:textSize="20sp" />
 
         <TextView
+            android:fontFamily="@font/font"
             android:id="@+id/btnSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,8 +48,8 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="16dp"
-            android:textColor="@android:color/holo_blue_light"
-            android:textSize="20sp"/>
+            android:textColor="@android:color/black"
+            android:textSize="15sp"/>
     </RelativeLayout>
     <ScrollView
         android:layout_width="match_parent"
@@ -58,13 +62,16 @@
 
             <!-- Application Status-->
             <TextView
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="@font/font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Application Status"
                 android:layout_marginTop="40dp"
                 android:layout_marginStart="28dp"/>
             <LinearLayout
-                android:background="@drawable/round_back_white_20"
+                android:background="@drawable/border1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -79,11 +86,12 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:textColor="@color/cream"
+                        android:fontFamily="@font/font"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Application Status"
-                        android:textStyle="bold" />
+                        android:text="Application Status" />
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/spinnerApplicationStatus"
@@ -101,13 +109,16 @@
                     android:layout_marginTop="10dp">
 
                     <TextView
+                        android:textColor="@color/cream"
+                        android:fontFamily="@font/font"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Date Applied"
-                        android:textStyle="bold" />
+                        android:text="Date Applied" />
 
                     <androidx.appcompat.widget.AppCompatButton
+                        android:fontFamily="@font/font"
+                        android:textColor="@color/cream"
                         android:id="@+id/btnPickDate"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
@@ -126,13 +137,15 @@
                     android:layout_marginTop="10dp">
 
                     <TextView
+                        android:textColor="@color/cream"
+                        android:fontFamily="@font/font"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Date of latest reply?"
-                        android:textStyle="bold" />
+                        android:text="Date of latest reply?" />
 
                     <androidx.appcompat.widget.AppCompatButton
+                        android:fontFamily="@font/font"
                         android:id="@+id/btnReplyDate"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
@@ -140,6 +153,7 @@
                         android:paddingStart="20dp"
                         android:layout_alignParentEnd="true"
                         android:layout_gravity="center"
+                        android:textColor="@color/cream"
                         android:text="Oct 8,2024"
                         android:paddingEnd="20dp" />
                 </RelativeLayout>
@@ -153,6 +167,7 @@
                     android:layout_marginTop="10dp">
 
                     <TextView
+                        android:fontFamily="@font/font"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -176,13 +191,16 @@
 
             <!-- Job Information Section -->
             <TextView
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:fontFamily="@font/font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Job Information"
                 android:layout_marginTop="40dp"
                 android:layout_marginStart="28dp"/>
             <LinearLayout
-                android:background="@drawable/round_back_white_20"
+                android:background="@drawable/border1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -197,16 +215,20 @@
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:background="@drawable/edittext"
+                        android:textColorHint="@color/black"
                         android:id="@+id/tfCompanyName"
                         android:layout_width="match_parent"
+                        android:fontFamily="@font/font"
                         android:layout_height="wrap_content"
                         app:endIconDrawable="@drawable/ic_close_symbol"
                         app:endIconTint="@color/white"
                         app:endIconMode="clear_text"
-                        android:hint="Company name">
+                        android:hint="Company Name">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
+                            android:fontFamily="@font/font"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -220,16 +242,20 @@
                     android:layout_marginTop="10dp">
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:background="@drawable/edittext"
+                        android:textColorHint="@color/black"
                         android:id="@+id/tfJobTittle"
                         android:layout_width="match_parent"
+                        android:fontFamily="@font/font"
                         android:layout_height="wrap_content"
-                        android:hint="Job title"
+                        android:hint="Job Title"
                         app:endIconDrawable="@drawable/ic_close_symbol"
-                        app:endIconTint="@color/white"
+                        app:endIconTint="@color/black"
                         app:endIconMode="clear_text">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
+                            android:fontFamily="@font/font"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -242,16 +268,20 @@
                     android:layout_marginTop="10dp">
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:background="@drawable/edittext"
+                        android:textColorHint="@color/black"
                         android:id="@+id/tfLocation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:endIconDrawable="@drawable/ic_close_symbol"
-                        app:endIconTint="@color/white"
+                        android:fontFamily="@font/font"
+                        app:endIconTint="@color/black"
                         app:endIconMode="clear_text"
                         android:hint="Location">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
+                            android:fontFamily="@font/font"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -264,6 +294,8 @@
                     android:layout_marginTop="10dp">
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:background="@drawable/edittext"
+                        android:textColorHint="@color/black"
                         android:id="@+id/tfLink"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -274,6 +306,7 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
+                            android:fontFamily="@font/font"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent" />
                     </com.google.android.material.textfield.TextInputLayout>

@@ -5,6 +5,7 @@
     android:id="@+id/id_home_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".views.fragments.HomeScreenFragment">
 
     <!-- Top App Bar -->
@@ -19,23 +20,26 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:fontFamily="@font/font"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerVertical="true"
             android:text="Dashboard"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
     </RelativeLayout>
 
     <LinearLayout
+        android:layout_margin="20dp"
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="20dp"
         android:weightSum="2"
+        android:background="@drawable/border2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
@@ -62,19 +66,21 @@
                     android:layout_height="100dp" />
 
                 <TextView
+                    android:fontFamily="@font/font"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="Applied"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:fontFamily="@font/font"
                     android:id="@+id/tvTotalApplications"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="35sp"
                     android:textStyle="bold" />
 
@@ -94,19 +100,21 @@
                     android:layout_height="100dp" />
 
                 <TextView
+                    android:fontFamily="@font/font"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="Rejected"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:fontFamily="@font/font"
                     android:id="@+id/tvRejectedApplications"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="35sp"
                     android:textStyle="bold" />
 
@@ -136,19 +144,21 @@
                     android:layout_height="100dp" />
 
                 <TextView
+                    android:fontFamily="@font/font"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="Interviews"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:fontFamily="@font/font"
                     android:id="@+id/tvTotalInterviews"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="35sp"
                     android:textStyle="bold" />
 
@@ -168,19 +178,21 @@
                     android:layout_height="100dp" />
 
                 <TextView
+                    android:fontFamily="@font/font"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="Offers"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:fontFamily="@font/font"
                     android:id="@+id/tvTotalOffers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="35sp"
                     android:textStyle="bold" />
             </RelativeLayout>

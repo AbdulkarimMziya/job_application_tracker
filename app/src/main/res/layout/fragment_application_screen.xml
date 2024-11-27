@@ -24,16 +24,17 @@
             android:id="@+id/topBarMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintEnd_toEndOf="parent">
 
             <TextView
+                android:fontFamily="@font/font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:textColor="@color/maroon"
                 android:text="Applications"
-                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -41,19 +42,19 @@
                 android:id="@+id/btnFilterList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:src="@drawable/ic_filter_list"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/btnSortList"
-                android:src="@drawable/ic_filter_list"
-                app:tint="@android:color/holo_blue_light" />
+                app:tint="@android:color/black" />
 
             <ImageView
                 android:id="@+id/btnSortList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginHorizontal="20dp"
                 android:src="@drawable/ic_sort_24"
-                app:tint="@android:color/holo_blue_light" />
+                app:tint="@android:color/black"
+                android:layout_marginHorizontal="20dp"
+                android:layout_alignParentEnd="true" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -64,8 +65,8 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
-        android:gravity="center"
         android:orientation="horizontal"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topBarLayout">
@@ -76,17 +77,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@drawable/round_back_white_secondary_20"
+            android:background="@drawable/border1"
             android:iconifiedByDefault="false"
             android:queryBackground="@android:color/transparent"
-            android:queryHint="Search Company..." />
+            android:queryHint="Search Company..."
+            app:theme="@style/CustomSearchView"/>
 
         <TextView
             android:id="@+id/btnCancelSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_weight=".1"
             android:text="Cancel"
             android:textAlignment="center"
             android:visibility="gone" />

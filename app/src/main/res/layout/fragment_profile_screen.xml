@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bg"
     tools:context=".views.fragments.ProfileScreenFragment">
     <!-- Top App Bar -->
     <RelativeLayout
@@ -17,11 +18,12 @@
             android:layout_height="50dp"/>
 
         <TextView
+            android:fontFamily="@font/font"
+            android:textColor="@color/maroon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Settings"
             android:layout_centerInParent="true"
-            android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="20sp" />
     </RelativeLayout>
@@ -79,6 +81,8 @@
 
             <!-- Night Mode -->
             <TextView
+                android:textColor="@color/maroon"
+                android:fontFamily="@font/font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="DISPLAY"
@@ -86,7 +90,7 @@
                 android:layout_marginStart="28dp"
                 android:visibility="gone"/>
             <LinearLayout
-                android:background="@drawable/round_back_white_20"
+                android:background="@drawable/border2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -108,10 +112,12 @@
                         android:src="@drawable/ic_nightmode"
                         android:padding="12dp"
                         android:layout_centerVertical="true"
-                        app:tint="@color/white"/>
+                        app:tint="@color/black"/>
 
                     <TextView
+                        android:fontFamily="@font/font"
                         android:layout_marginStart="20dp"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -120,6 +126,7 @@
                         android:layout_toEndOf="@id/icNightMode"/>
 
                     <androidx.appcompat.widget.SwitchCompat
+                        app:thumbTint="@color/maroon"
                         android:id="@+id/btnActivateNightMode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -131,6 +138,8 @@
 
             <!-- Language Section-->
             <TextView
+                android:textColor="@color/maroon"
+                android:fontFamily="@font/font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="LANGUAGE PREFERENCE"
@@ -138,7 +147,7 @@
                 android:visibility="gone"
                 android:layout_marginStart="28dp"/>
             <LinearLayout
-                android:background="@drawable/round_back_white_20"
+                android:background="@drawable/border2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -159,9 +168,11 @@
                         android:layout_height="40dp"
                         android:src="@drawable/ic_language"
                         android:padding="12dp"
-                        app:tint="@color/white" />
+                        app:tint="@color/black" />
 
                     <TextView
+                        android:fontFamily="@font/font"
+                        android:textColor="@color/black"
                         android:layout_marginStart="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -171,11 +182,11 @@
                         android:layout_toEndOf="@id/ivLanguage"/>
 
                     <ImageView
+                        app:tint="@color/maroon"
                         android:id="@+id/btnLanguage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_arrow_right"
-                        app:tint="@color/white"
                         android:layout_centerVertical="true"
                         android:layout_alignParentEnd="true" />
                 </RelativeLayout>
@@ -183,13 +194,15 @@
 
             <!--  Support Us Section -->
             <TextView
+                android:textColor="@color/maroon"
+                android:fontFamily="@font/font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SUPPORT US"
                 android:layout_marginTop="40dp"
                 android:layout_marginStart="28dp"/>
             <LinearLayout
-                android:background="@drawable/round_back_white_20"
+                android:background="@drawable/border2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -203,15 +216,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <ImageView
+                        app:tint="@color/black"
                         android:id="@+id/ivFollowMe"
                         android:background="@drawable/round_back_white_secondary_20"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:src="@drawable/ic_person_raised_hand"
-                        android:padding="12dp"
-                        app:tint="@color/white" />
+                        android:padding="12dp"/>
 
                     <TextView
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/font"
                         android:layout_marginStart="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -225,7 +240,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_arrow_north_east"
-                        app:tint="@android:color/holo_blue_light"
+                        app:tint="@color/maroon"
                         android:layout_centerVertical="true"
                         android:layout_alignParentEnd="true" />
                 </RelativeLayout>
@@ -237,15 +252,17 @@
                     android:layout_marginTop="10dp">
 
                     <ImageView
+                        app:tint="@color/black"
                         android:id="@+id/ivFollowMe1"
                         android:background="@drawable/round_back_white_secondary_20"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:src="@drawable/ic_person_raised_hand"
-                        android:padding="12dp"
-                        app:tint="@color/white" />
+                        android:padding="12dp"/>
 
                     <TextView
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/font"
                         android:layout_marginStart="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -259,7 +276,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_arrow_north_east"
-                        app:tint="@android:color/holo_blue_light"
+                        app:tint="@color/maroon"
                         android:layout_centerVertical="true"
                         android:layout_alignParentEnd="true" />
                 </RelativeLayout>
@@ -271,15 +288,17 @@
                     android:layout_marginTop="10dp">
 
                     <ImageView
+                        app:tint="@color/black"
                         android:id="@+id/ivReview"
                         android:background="@drawable/round_back_white_secondary_20"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:src="@drawable/ic_star_rate"
-                        android:padding="12dp"
-                        app:tint="@color/white" />
+                        android:padding="12dp"/>
 
                     <TextView
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/font"
                         android:layout_marginStart="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -293,7 +312,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_arrow_north_east"
-                        app:tint="@color/white"
+                        app:tint="@color/maroon"
                         android:layout_centerVertical="true"
                         android:layout_alignParentEnd="true" />
                 </RelativeLayout>
