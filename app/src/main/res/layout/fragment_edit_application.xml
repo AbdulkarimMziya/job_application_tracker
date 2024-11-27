@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:padding="10dp"
     android:background="@drawable/bg"
     tools:context=".views.fragments.EditApplicationFragment">
 
@@ -219,7 +220,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:endIconDrawable="@drawable/ic_close_symbol"
-                        app:endIconTint="@color/white"
+                        app:endIconTint="@color/black"
                         app:endIconMode="clear_text"
                         android:textColorHint="@color/black"
                         android:hint="Company Name">
@@ -228,6 +229,7 @@
                             android:fontFamily="@font/font"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:background="@android:color/transparent" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -254,6 +256,7 @@
                             android:fontFamily="@font/font"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:background="@android:color/transparent" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </RelativeLayout>
@@ -280,6 +283,7 @@
                             android:fontFamily="@font/font"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:background="@android:color/transparent" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </RelativeLayout>
@@ -297,7 +301,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:endIconDrawable="@drawable/ic_close_symbol"
-                        app:endIconTint="@color/white"
+                        app:endIconTint="@color/black"
                         android:hint="Link"
                         app:endIconMode="clear_text">
 
@@ -305,6 +309,7 @@
                             android:fontFamily="@font/font"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:background="@android:color/transparent" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </RelativeLayout>

@@ -222,13 +222,14 @@
                         android:fontFamily="@font/font"
                         android:layout_height="wrap_content"
                         app:endIconDrawable="@drawable/ic_close_symbol"
-                        app:endIconTint="@color/white"
+                        app:endIconTint="@color/black"
                         app:endIconMode="clear_text"
                         android:hint="Company Name">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:fontFamily="@font/font"
+                            android:textColor="@color/black"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -256,6 +257,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:fontFamily="@font/font"
+                            android:textColor="@color/black"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -281,8 +283,9 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
-                            android:fontFamily="@font/font"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/font"
+                            android:textColor="@color/black"
                             android:background="@android:color/transparent" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </RelativeLayout>
@@ -306,8 +309,9 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
-                            android:fontFamily="@font/font"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/font"
+                            android:textColor="@color/black"
                             android:background="@android:color/transparent" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </RelativeLayout>

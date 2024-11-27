@@ -87,7 +87,9 @@
             android:id="@+id/btnCancelSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
             android:layout_centerVertical="true"
+            android:textColor="@color/black"
             android:text="Cancel"
             android:textAlignment="center"
             android:visibility="gone" />
@@ -152,8 +154,7 @@
             android:id="@+id/txtDisplayTotalApplications"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5 Applications"
-            android:textColor="@android:color/holo_blue_light"
+            android:textColor="@android:color/black"
             android:textSize="20sp" />
     </LinearLayout>
 

@@ -323,6 +323,7 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
+                android:textColor="@color/black"
                 android:text="Any comments or feedback is helpful, so please feel free to share ;)"
                 android:textAlignment="center"
                 android:lineSpacingExtra="4dp"
