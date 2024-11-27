@@ -22,7 +22,6 @@ class AuthenticateMainFragment : Fragment() {
 
     private lateinit var btnSignIn: Button
     private lateinit var btnSignUp: Button
-    private lateinit var btnGoogleLogin: Button
 
     private lateinit var auth: FirebaseAuth
 
@@ -58,7 +57,6 @@ class AuthenticateMainFragment : Fragment() {
     private fun init() {
         btnSignIn = authFragBinding.btnSignIn
         btnSignUp = authFragBinding.btnSignUp
-        btnGoogleLogin = authFragBinding.btnGoogleLogin
 
         navigateComponent()
     }
