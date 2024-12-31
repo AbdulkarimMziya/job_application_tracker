@@ -1,6 +1,6 @@
 # Hire Horizon - Job Application Tracker
 
-![Hire Horizon Banner](https://raw.githubusercontent.com/AbdulkarimMziya/job_application_tracker/main/app/App Banner-2.png)
+<img src="public/img-2.png" alt="Your Image" width="200" height="150" />
 
 
 ## Overview
