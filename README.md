@@ -1,5 +1,8 @@
 # Hire Horizon - Job Application Tracker
 
+![Hire Horizon Banner](https://raw.githubusercontent.com/AbdulkarimMziya/job_application_tracker/main/app/App Banner-2.png)
+
+
 ## Overview
 
 Hire Horizon is an intuitive and user-friendly app designed to simplify and streamline the job search process. By offering powerful management tools and customizability, job seekers can efficiently track their job applications and increase their chances of success.
