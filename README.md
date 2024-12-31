@@ -66,5 +66,4 @@ Hire Horizon is an intuitive and user-friendly app designed to simplify and stre
    ```bash
    git clone https://github.com/AbdulkarimMziya/job_application_tracker.git
 
-## Privacy Policy
-- **Website**: [abdulmziya.netlify.app](https://abdulmziya.netlify.app)
+## [Privacy Policy](https://github.com/AbdulkarimMziya/job_application_tracker/blob/main/PrivacyPolicy.md)
