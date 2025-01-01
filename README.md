@@ -1,6 +1,6 @@
 # Hire Horizon - Job Application Tracker
 
-<img src="app/AppBanner.png" alt="Your Image"/>
+<img src="app/src/main/res/drawable/App Post.png" alt="Your Image"/>
 
 
 ## Overview
