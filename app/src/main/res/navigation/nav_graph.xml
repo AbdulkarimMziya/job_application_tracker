@@ -6,17 +6,17 @@
     app:startDestination="@id/homeScreenFragment">
     <fragment
         android:id="@+id/homeScreenFragment"
-        android:name="com.example.job_application_tracker.views.fragments.HomeScreenFragment"
+        android:name="com.akproduction.job_application_tracker.views.fragments.HomeScreenFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home_screen" />
     <fragment
         android:id="@+id/applicationScreenFragment"
-        android:name="com.example.job_application_tracker.views.fragments.ApplicationScreenFragment"
+        android:name="com.akproduction.job_application_tracker.views.fragments.ApplicationScreenFragment"
         android:label="Application"
         tools:layout="@layout/fragment_application_screen" />
     <fragment
         android:id="@+id/profileScreenFragment"
-        android:name="com.example.job_application_tracker.views.fragments.ProfileScreenFragment"
+        android:name="com.akproduction.job_application_tracker.views.fragments.ProfileScreenFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile_screen" />
 </navigation>

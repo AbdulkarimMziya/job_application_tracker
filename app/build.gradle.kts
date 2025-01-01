@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.job_application_tracker"
+    namespace = "com.akproduction.job_application_tracker"
     compileSdk = 34
 
     defaultConfig {
